@@ -1,0 +1,83 @@
+# Raw and generated data
+data/raw/
+data/processed/
+artifacts/
+reports/generated/
+reports/release/*.parquet
+reports/release/*.png
+reports/release/browser-profile*/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+
+# Notebooks and editors
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# Credentials and machine-specific files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+configs/local.*
+*.log
+**/browser-profile*/
+.venv/
+.conda*/
+
+# Personal learning files and publication staging
+learn/
+publish/
+deliverables/format_math.py
+deliverables/revise_tone.py
+deliverables/tone_revision_manifest.json
+
+
+# Generated report allowlist
+/reports/**
+!/reports/release/
+!/reports/release/architecture/
+!/reports/release/figures/
+!/reports/release/final_evaluation/
+!/reports/release/interpretation_checks/
+!/reports/release/semantic_audit/
+!/reports/release/architecture/01_pipeline.png
+!/reports/release/architecture/02_two_tower.png
+!/reports/release/architecture/03_ranker_comparison.png
+!/reports/release/architecture/04_bge_retrieval.png
+!/reports/release/demo_benchmark.json
+!/reports/release/environment.txt
+!/reports/release/experiment_summary.md
+!/reports/release/figures/01_retrieval.png
+!/reports/release/figures/02_fusion.png
+!/reports/release/figures/03_rankers.png
+!/reports/release/figures/04_diagnostics.png
+!/reports/release/figures/05_groups.png
+!/reports/release/figures/06_history.png
+!/reports/release/figures/07_fusion_attribution.png
+!/reports/release/figures/08_final_lists.png
+!/reports/release/final_evaluation/report.md
+!/reports/release/final_evaluation/results.json
+!/reports/release/fusion_selection.json
+!/reports/release/interpretation_checks/report.md
+!/reports/release/interpretation_checks/results.json
+!/reports/release/release_summary.json
+!/reports/release/selected_test_group_analysis.json
+!/reports/release/semantic_audit/audit.json
+
+/deliverables/**
+!/deliverables/GameFeed_实验结果与面试图解.html
+!/deliverables/GameFeed_模型结构图.html
+!/deliverables/GameFeed_模型结构图.pdf
+
+# Local interview and historical notes
+/docs/CONTENT_EXPERIMENT.md
+/docs/PROJECT_WALKTHROUGH.md
+/docs/RESUME_AND_INTERVIEW.md
+/docs/report_questions.json

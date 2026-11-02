@@ -1,0 +1,372 @@
+{
+  "settings": {
+    "scene_tab": 0,
+    "watch_weight": 0.7,
+    "like_weight": 0.3,
+    "candidates": 100,
+    "output_k": 10,
+    "author_limit": 2,
+    "bootstrap_repeats": 2000,
+    "bootstrap_seed": 2026,
+    "ndcg_denominator": "All observed positives for this user/date, not only recalled positives",
+    "scene": "Fixed tab=0 scenario; no later observed tab used to score candidates",
+    "interpretation": "Offline replay of observed positives; unlabeled candidates have unknown actual feedback",
+    "test_history": "Previously inspected test set; this analysis does not create new held-out data"
+  },
+  "fusion": {
+    "dev": {
+      "queries": 5410,
+      "users": 2925,
+      "itemcf": 0.24377270193351525,
+      "selected": 0.24702285596925153,
+      "delta": 0.0032501540357362906,
+      "improved": 52,
+      "harmed": 32,
+      "unchanged": 5326,
+      "gained": 52,
+      "lost": 32,
+      "newly_hit": 47,
+      "lost_all": 24,
+      "users_by_mean_change": {
+        "improved": 49,
+        "harmed": 31,
+        "unchanged": 2845
+      },
+      "paired_user_interval": {
+        "estimate": 0.0032501540357362906,
+        "lower": 0.0006916407683573733,
+        "upper": 0.005848417485643035,
+        "positive_fraction": 0.992,
+        "users": 2925,
+        "queries": 5410,
+        "repeats": 2000,
+        "seed": 2026
+      },
+      "history_groups": {
+        "1—5条历史": {
+          "queries": 695,
+          "users": 550,
+          "itemcf": 0.2576378896882494,
+          "selected": 0.2669904076738609,
+          "delta": 0.00935251798561151,
+          "improved": 10,
+          "harmed": 3,
+          "unchanged": 682,
+          "gained": 10,
+          "lost": 3,
+          "newly_hit": 10,
+          "lost_all": 2
+        },
+        "6—20条历史": {
+          "queries": 4647,
+          "users": 2391,
+          "itemcf": 0.24049608725205882,
+          "selected": 0.24288113853962784,
+          "delta": 0.002385051287569041,
+          "improved": 42,
+          "harmed": 29,
+          "unchanged": 4576,
+          "gained": 42,
+          "lost": 29,
+          "newly_hit": 37,
+          "lost_all": 22
+        },
+        "无历史": {
+          "queries": 68,
+          "users": 68,
+          "itemcf": 0.3259803921568627,
+          "selected": 0.3259803921568627,
+          "delta": 0.0,
+          "improved": 0,
+          "harmed": 0,
+          "unchanged": 68,
+          "gained": 0,
+          "lost": 0,
+          "newly_hit": 0,
+          "lost_all": 0
+        }
+      },
+      "game": {
+        "queries": 644,
+        "gained": 0,
+        "lost": 5,
+        "delta": -0.006987577639751553,
+        "paired_user_interval": {
+          "estimate": -0.006987577639751553,
+          "lower": -0.013449455781347562,
+          "upper": -0.0015575718376186396,
+          "positive_fraction": 0.0,
+          "users": 494,
+          "queries": 644,
+          "repeats": 2000,
+          "seed": 2026
+        }
+      },
+      "gained_from_popular_top10": 52,
+      "largest_improvements": [],
+      "largest_losses": []
+    },
+    "test": {
+      "queries": 7122,
+      "users": 3178,
+      "itemcf": 0.24632216476150764,
+      "selected": 0.25317289616994754,
+      "delta": 0.006850731408439917,
+      "improved": 101,
+      "harmed": 35,
+      "unchanged": 6986,
+      "gained": 101,
+      "lost": 35,
+      "newly_hit": 82,
+      "lost_all": 31,
+      "users_by_mean_change": {
+        "improved": 101,
+        "harmed": 34,
+        "unchanged": 3043
+      },
+      "paired_user_interval": {
+        "estimate": 0.006850731408439917,
+        "lower": 0.004408673544022858,
+        "upper": 0.009412660337880204,
+        "positive_fraction": 1.0,
+        "users": 3178,
+        "queries": 7122,
+        "repeats": 2000,
+        "seed": 2026
+      },
+      "history_groups": {
+        "1—5条历史": {
+          "queries": 724,
+          "users": 535,
+          "itemcf": 0.27221454880294654,
+          "selected": 0.2869475138121547,
+          "delta": 0.014732965009208102,
+          "improved": 21,
+          "harmed": 7,
+          "unchanged": 696,
+          "gained": 21,
+          "lost": 7,
+          "newly_hit": 17,
+          "lost_all": 6
+        },
+        "6—20条历史": {
+          "queries": 6351,
+          "users": 2708,
+          "itemcf": 0.24333015127771856,
+          "selected": 0.24933302364809215,
+          "delta": 0.0060028723703735515,
+          "improved": 80,
+          "harmed": 28,
+          "unchanged": 6243,
+          "gained": 80,
+          "lost": 28,
+          "newly_hit": 65,
+          "lost_all": 25
+        },
+        "无历史": {
+          "queries": 47,
+          "users": 47,
+          "itemcf": 0.25177304964539005,
+          "selected": 0.25177304964539005,
+          "delta": 0.0,
+          "improved": 0,
+          "harmed": 0,
+          "unchanged": 47,
+          "gained": 0,
+          "lost": 0,
+          "newly_hit": 0,
+          "lost_all": 0
+        }
+      },
+      "game": {
+        "queries": 905,
+        "gained": 0,
+        "lost": 4,
+        "delta": -0.0028545119705340695,
+        "paired_user_interval": {
+          "estimate": -0.0028545119705340695,
+          "lower": -0.00646726679993078,
+          "upper": -0.00027901785714285713,
+          "positive_fraction": 0.0,
+          "users": 644,
+          "queries": 905,
+          "repeats": 2000,
+          "seed": 2026
+        }
+      },
+      "gained_from_popular_top10": 101,
+      "largest_improvements": [],
+      "largest_losses": []
+    }
+  },
+  "lists": {
+    "dev": {
+      "stages": {
+        "recall": {
+          "queries": 5410,
+          "recall10": 0.044928190006748234,
+          "ndcg10": 0.02317070945675008,
+          "repeat_author_ratio": 0.005120147874306839,
+          "author_over_cap_list_ratio": 0.0036968576709796672,
+          "repeat_caption_ratio": 0.0002033271719038817,
+          "lists_with_repeated_caption": 11,
+          "coverage": 0.5500461558749835,
+          "fewer_than10": 0,
+          "returned_items": 54100
+        },
+        "ranked": {
+          "queries": 5410,
+          "recall10": 0.03366700407827949,
+          "ndcg10": 0.016910967787355437,
+          "repeat_author_ratio": 0.002587800369685767,
+          "author_over_cap_list_ratio": 0.0,
+          "repeat_caption_ratio": 0.00016635859519408504,
+          "lists_with_repeated_caption": 9,
+          "coverage": 0.2334168534880654,
+          "fewer_than10": 0,
+          "returned_items": 54100
+        },
+        "author_cap": {
+          "queries": 5410,
+          "recall10": 0.03366700407827949,
+          "ndcg10": 0.016910967787355437,
+          "repeat_author_ratio": 0.002587800369685767,
+          "author_over_cap_list_ratio": 0.0,
+          "repeat_caption_ratio": 0.00016635859519408504,
+          "lists_with_repeated_caption": 9,
+          "coverage": 0.2334168534880654,
+          "fewer_than10": 0,
+          "returned_items": 54100
+        },
+        "author_and_caption": {
+          "queries": 5410,
+          "recall10": 0.03366700407827949,
+          "ndcg10": 0.016910967787355437,
+          "repeat_author_ratio": 0.0024953789279112755,
+          "author_over_cap_list_ratio": 0.0,
+          "repeat_caption_ratio": 0.0,
+          "lists_with_repeated_caption": 0,
+          "coverage": 0.2334168534880654,
+          "fewer_than10": 0,
+          "returned_items": 54100
+        }
+      },
+      "recall10_paired_intervals": {
+        "ranked_minus_recall": {
+          "estimate": -0.011261185928468738,
+          "lower": -0.01737085308518094,
+          "upper": -0.004879549619547312,
+          "positive_fraction": 0.0,
+          "users": 2925,
+          "queries": 5410,
+          "repeats": 2000,
+          "seed": 2026
+        },
+        "author_cap_minus_ranked": {
+          "estimate": 0.0,
+          "lower": 0.0,
+          "upper": 0.0,
+          "positive_fraction": 0.0,
+          "users": 2925,
+          "queries": 5410,
+          "repeats": 2000,
+          "seed": 2026
+        },
+        "author_and_caption_minus_author_cap": {
+          "estimate": 0.0,
+          "lower": 0.0,
+          "upper": 0.0,
+          "positive_fraction": 0.0,
+          "users": 2925,
+          "queries": 5410,
+          "repeats": 2000,
+          "seed": 2026
+        }
+      }
+    },
+    "test": {
+      "stages": {
+        "recall": {
+          "queries": 7122,
+          "recall10": 0.04714588821581239,
+          "ndcg10": 0.02491613038172953,
+          "repeat_author_ratio": 0.005405784891884302,
+          "author_over_cap_list_ratio": 0.004352709912945802,
+          "repeat_caption_ratio": 0.00023869699522606008,
+          "lists_with_repeated_caption": 17,
+          "coverage": 0.5416062244494263,
+          "fewer_than10": 0,
+          "returned_items": 71220
+        },
+        "ranked": {
+          "queries": 7122,
+          "recall10": 0.032277472441752136,
+          "ndcg10": 0.01660769109743002,
+          "repeat_author_ratio": 0.003173265936534681,
+          "author_over_cap_list_ratio": 0.0,
+          "repeat_caption_ratio": 0.0002246559955068801,
+          "lists_with_repeated_caption": 16,
+          "coverage": 0.23684557562969802,
+          "fewer_than10": 0,
+          "returned_items": 71220
+        },
+        "author_cap": {
+          "queries": 7122,
+          "recall10": 0.032277472441752136,
+          "ndcg10": 0.01660769109743002,
+          "repeat_author_ratio": 0.003173265936534681,
+          "author_over_cap_list_ratio": 0.0,
+          "repeat_caption_ratio": 0.0002246559955068801,
+          "lists_with_repeated_caption": 16,
+          "coverage": 0.23684557562969802,
+          "fewer_than10": 0,
+          "returned_items": 71220
+        },
+        "author_and_caption": {
+          "queries": 7122,
+          "recall10": 0.03241788243894394,
+          "ndcg10": 0.016648278688881562,
+          "repeat_author_ratio": 0.002976691940466161,
+          "author_over_cap_list_ratio": 0.0,
+          "repeat_caption_ratio": 0.0,
+          "lists_with_repeated_caption": 0,
+          "coverage": 0.23697744955822234,
+          "fewer_than10": 0,
+          "returned_items": 71220
+        }
+      },
+      "recall10_paired_intervals": {
+        "ranked_minus_recall": {
+          "estimate": -0.014868415774060255,
+          "lower": -0.02027486858757482,
+          "upper": -0.00952916546342977,
+          "positive_fraction": 0.0,
+          "users": 3178,
+          "queries": 7122,
+          "repeats": 2000,
+          "seed": 2026
+        },
+        "author_cap_minus_ranked": {
+          "estimate": 0.0,
+          "lower": 0.0,
+          "upper": 0.0,
+          "positive_fraction": 0.0,
+          "users": 3178,
+          "queries": 7122,
+          "repeats": 2000,
+          "seed": 2026
+        },
+        "author_and_caption_minus_author_cap": {
+          "estimate": 0.00014040999719180006,
+          "lower": 0.0,
+          "upper": 0.0004267425320056899,
+          "positive_fraction": 0.6305,
+          "users": 3178,
+          "queries": 7122,
+          "repeats": 2000,
+          "seed": 2026
+        }
+      }
+    }
+  }
+}

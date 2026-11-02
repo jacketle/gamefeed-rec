@@ -1,0 +1,44 @@
+{
+  "method": "selected",
+  "split": "test",
+  "history_groups": {
+    "0_empty": {
+      "queries": 47.0,
+      "recall@100": 0.25177304964539005,
+      "hitrate@100": 0.2765957446808511,
+      "coverage@100": 0.013187392852433075
+    },
+    "1_5_short": {
+      "queries": 724.0,
+      "recall@100": 0.2869475138121547,
+      "hitrate@100": 0.3218232044198895,
+      "coverage@100": 0.6585783990505077
+    },
+    "6_20_longer": {
+      "queries": 6351.0,
+      "recall@100": 0.24933302364809215,
+      "hitrate@100": 0.3023145961265942,
+      "coverage@100": 0.6688645654754055
+    }
+  },
+  "item_groups": {
+    "all_train_seen": {
+      "queries": 7102.0,
+      "recall@100": 0.2538037219359382,
+      "hitrate@100": 0.3047029005913827,
+      "coverage@100": 0.6695239351180272
+    },
+    "contains_train_unseen": {
+      "queries": 20.0,
+      "recall@100": 0.029166666666666664,
+      "hitrate@100": 0.1,
+      "coverage@100": 0.16668864565475405
+    }
+  },
+  "unseen_positive_only": {
+    "queries": 20,
+    "positives": 20,
+    "hits_at_100": 0,
+    "micro_recall_at_100": 0.0
+  }
+}

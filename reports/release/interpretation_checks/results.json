@@ -1,0 +1,136 @@
+{
+  "gauc": {
+    "dev": {
+      "long_view": {
+        "rows": 23461,
+        "users": 4185,
+        "positives": 7211,
+        "positive_rate": 0.3073611525510422,
+        "valid_users": 2423,
+        "excluded_users": 1762,
+        "all_negative_users": 1260,
+        "all_positive_users": 502,
+        "covered_rows": 18374,
+        "user_coverage": 0.5789725209080048,
+        "row_coverage": 0.7831720728016709,
+        "single_auc": 0.7386041667111145,
+        "single_gauc": 0.6425492690462297,
+        "shared_auc": 0.7391194350511504,
+        "shared_gauc": 0.6438195150070742,
+        "unknown_users": 0
+      },
+      "is_like": {
+        "rows": 23461,
+        "users": 4185,
+        "positives": 464,
+        "positive_rate": 0.019777503090234856,
+        "valid_users": 271,
+        "excluded_users": 3914,
+        "all_negative_users": 3893,
+        "all_positive_users": 21,
+        "covered_rows": 2291,
+        "user_coverage": 0.06475507765830346,
+        "row_coverage": 0.09765142150803462,
+        "single_auc": 0.867709928056583,
+        "single_gauc": 0.6528628691982872,
+        "shared_auc": 0.8238558196496394,
+        "shared_gauc": 0.6566610838517734,
+        "unknown_users": 0
+      }
+    },
+    "test": {
+      "long_view": {
+        "rows": 31020,
+        "users": 4402,
+        "positives": 9530,
+        "positive_rate": 0.30722114764667957,
+        "valid_users": 2804,
+        "excluded_users": 1598,
+        "all_negative_users": 1224,
+        "all_positive_users": 374,
+        "covered_rows": 25854,
+        "user_coverage": 0.6369831894593366,
+        "row_coverage": 0.8334622823984527,
+        "single_auc": 0.7302687088897103,
+        "single_gauc": 0.6426759817411014,
+        "shared_auc": 0.7271418244265007,
+        "shared_gauc": 0.6368057904808151,
+        "unknown_users": 0
+      },
+      "is_like": {
+        "rows": 31020,
+        "users": 4402,
+        "positives": 523,
+        "positive_rate": 0.016860090264345585,
+        "valid_users": 312,
+        "excluded_users": 4090,
+        "all_negative_users": 4078,
+        "all_positive_users": 12,
+        "covered_rows": 3688,
+        "user_coverage": 0.0708768741481145,
+        "row_coverage": 0.11889103803997421,
+        "single_auc": 0.8374918361715796,
+        "single_gauc": 0.6149025699380193,
+        "shared_auc": 0.785882114474351,
+        "shared_gauc": 0.593052196940988,
+        "unknown_users": 0
+      }
+    }
+  },
+  "random": {
+    "dev": {
+      "queries": 5410,
+      "min_available_items": 7583,
+      "max_available_items": 7583,
+      "positive_occurrences": 7158,
+      "unavailable_positive_occurrences": 0,
+      "queries_with_unavailable_positives": 0,
+      "expected_recall_at_100": 0.013187392852433075,
+      "fixed_full_catalog_reference": 0.013187392852433075
+    },
+    "test": {
+      "queries": 7122,
+      "min_available_items": 7583,
+      "max_available_items": 7583,
+      "positive_occurrences": 9473,
+      "unavailable_positive_occurrences": 0,
+      "queries_with_unavailable_positives": 0,
+      "expected_recall_at_100": 0.013187392852433076,
+      "fixed_full_catalog_reference": 0.013187392852433075
+    }
+  },
+  "catalog_items": 7583,
+  "gauc_weight": "有效用户的曝光记录数",
+  "random_definition": "每日可用内容中均匀无放回选100条；保留全部正例作分母，逐组等权平均",
+  "previous_semantic_random_check_matches": true,
+  "dev_top10": [
+    {
+      "method": "popularity",
+      "label": "热门原顺序",
+      "queries": 5410,
+      "recall10": 0.04448009271484318,
+      "ndcg10": 0.022041911021418305
+    },
+    {
+      "method": "itemcf",
+      "label": "ItemCF原顺序",
+      "queries": 5410,
+      "recall10": 0.038576049643517296,
+      "ndcg10": 0.019969528733761923
+    },
+    {
+      "method": "selected",
+      "label": "融合候选的RRF顺序",
+      "queries": 5410,
+      "recall10": 0.044928190006748234,
+      "ndcg10": 0.02317070945675008
+    },
+    {
+      "method": "ranked",
+      "label": "融合＋当前模型排序（tab=0，权重0.7/0.3）",
+      "queries": 5410,
+      "recall10": 0.03366700407827949,
+      "ndcg10": 0.016910967787355437
+    }
+  ]
+}

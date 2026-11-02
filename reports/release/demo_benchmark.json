@@ -1,0 +1,11 @@
+{
+  "checked_methods": 4,
+  "checked_queries": 30,
+  "warmup_requests": 5,
+  "scope": "Cached recall lookup + two CPU rankers + metadata + author-cap rerank; excludes model loading, recall generation and HTTP transfer",
+  "median_ms": 58.94215000000003,
+  "p95_ms": 73.51820000000231,
+  "p95_definition": "nearest-rank ceil(0.95 * 30)",
+  "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "game_results": 10
+}

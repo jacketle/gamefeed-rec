@@ -1,0 +1,24 @@
+seed: 2026
+fixed_epochs: true
+paths:
+  raw_dir: data/raw/kuairand
+  processed_dir: data/processed/kuairand
+  artifact_dir: artifacts/release
+  report_dir: reports/release
+data:
+  history_length: 20
+model:
+  item_id_dim: 32
+  tag_dim: 16
+  user_id_dim: 16
+  hidden_dim: 128
+  output_dim: 64
+  dropout: 0.1
+  temperature: 0.1
+  batch_size: 128
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  epochs: 3
+  like_loss_weight: 1.0
+retrieval:
+  top_k: [50, 100]

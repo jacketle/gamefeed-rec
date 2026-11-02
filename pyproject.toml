@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gamefeed-rec"
+version = "0.1.0"
+description = "A reproducible two-stage content recommendation project built on KuaiRand-Pure."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "pyarrow>=12",
+  "PyYAML>=6",
+  "scikit-learn>=1.3",
+  "torch>=2.0",
+]
+
+[project.scripts]
+gamefeed = "gamefeed.cli:main"
+
+[project.optional-dependencies]
+semantic = ["sentence-transformers>=3,<6"]
+report = ["matplotlib>=3.7"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+gamefeed = ["web/*", "report_web/*"]
+

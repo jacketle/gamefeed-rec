@@ -1,0 +1,365 @@
+{
+  "selected": {
+    "name": "quota_0",
+    "kind": "quota",
+    "semantic_quota": 0
+  },
+  "selected_test": {
+    "queries": 7122.0,
+    "recall@50": 0.166188609122476,
+    "hitrate@50": 0.20570064588598708,
+    "recall@100": 0.25317289616994754,
+    "hitrate@100": 0.3041280539174389,
+    "coverage@100": 0.6695239351180272
+  },
+  "popularity_test": {
+    "queries": 7122.0,
+    "recall@50": 0.1481449772730312,
+    "hitrate@50": 0.18548160629036786,
+    "recall@100": 0.22222273381708935,
+    "hitrate@100": 0.2712721145745577,
+    "coverage@100": 0.013846762495054728
+  },
+  "game_items": 739,
+  "results": {
+    "popularity": {
+      "dev": {
+        "queries": 5410.0,
+        "recall@50": 0.12538105507144323,
+        "hitrate@50": 0.15822550831792975,
+        "recall@100": 0.19873558665610422,
+        "hitrate@100": 0.24676524953789278,
+        "coverage@100": 0.013319266780957404
+      },
+      "test": {
+        "queries": 7122.0,
+        "recall@50": 0.1481449772730312,
+        "hitrate@50": 0.18548160629036786,
+        "recall@100": 0.22222273381708935,
+        "hitrate@100": 0.2712721145745577,
+        "coverage@100": 0.013846762495054728
+      }
+    },
+    "itemcf": {
+      "dev": {
+        "queries": 5410.0,
+        "recall@50": 0.14742936361235806,
+        "hitrate@50": 0.18207024029574861,
+        "recall@100": 0.24377270193351525,
+        "hitrate@100": 0.2920517560073937,
+        "coverage@100": 0.6695239351180272
+      },
+      "test": {
+        "queries": 7122.0,
+        "recall@50": 0.1573082339826232,
+        "hitrate@50": 0.1950294860994103,
+        "recall@100": 0.24632216476150764,
+        "hitrate@100": 0.2969671440606571,
+        "coverage@100": 0.6695239351180272
+      }
+    },
+    "semantic": {
+      "dev": {
+        "queries": 5410.0,
+        "recall@50": 0.021012528239884986,
+        "hitrate@50": 0.02624768946395564,
+        "recall@100": 0.036160402546724174,
+        "hitrate@100": 0.044177449168207025,
+        "coverage@100": 0.8192008439931425
+      },
+      "test": {
+        "queries": 7122.0,
+        "recall@50": 0.01891010639957565,
+        "hitrate@50": 0.02499297950014041,
+        "recall@100": 0.03319448344722144,
+        "hitrate@100": 0.04296545914069082,
+        "coverage@100": 0.8148490043518396
+      }
+    },
+    "selected": {
+      "dev": {
+        "queries": 5410.0,
+        "recall@50": 0.15382030631106416,
+        "hitrate@50": 0.19038817005545286,
+        "recall@100": 0.24702285596925153,
+        "hitrate@100": 0.29630314232902033,
+        "coverage@100": 0.6695239351180272
+      },
+      "test": {
+        "queries": 7122.0,
+        "recall@50": 0.166188609122476,
+        "hitrate@50": 0.20570064588598708,
+        "recall@100": 0.25317289616994754,
+        "hitrate@100": 0.3041280539174389,
+        "coverage@100": 0.6695239351180272
+      }
+    }
+  },
+  "groups": {
+    "popularity": {
+      "game": {
+        "queries": 905,
+        "positives": 1019,
+        "hits": 165,
+        "micro_recall": 0.1619234543670265,
+        "macro_recall": 0.16473296500920812
+      },
+      "unseen": {
+        "queries": 20,
+        "positives": 20,
+        "hits": 0,
+        "micro_recall": 0.0,
+        "macro_recall": 0.0
+      }
+    },
+    "itemcf": {
+      "game": {
+        "queries": 905,
+        "positives": 1019,
+        "hits": 300,
+        "micro_recall": 0.2944062806673209,
+        "macro_recall": 0.29907918968692454
+      },
+      "unseen": {
+        "queries": 20,
+        "positives": 20,
+        "hits": 0,
+        "micro_recall": 0.0,
+        "macro_recall": 0.0
+      }
+    },
+    "semantic": {
+      "game": {
+        "queries": 905,
+        "positives": 1019,
+        "hits": 63,
+        "micro_recall": 0.06182531894013739,
+        "macro_recall": 0.056169429097605895
+      },
+      "unseen": {
+        "queries": 20,
+        "positives": 20,
+        "hits": 2,
+        "micro_recall": 0.1,
+        "macro_recall": 0.1
+      }
+    },
+    "selected": {
+      "game": {
+        "queries": 905,
+        "positives": 1019,
+        "hits": 296,
+        "micro_recall": 0.2904808635917566,
+        "macro_recall": 0.2962246777163904
+      },
+      "unseen": {
+        "queries": 20,
+        "positives": 20,
+        "hits": 0,
+        "micro_recall": 0.0,
+        "macro_recall": 0.0
+      }
+    }
+  },
+  "validation": {
+    "small_fit": {
+      "samples": 100,
+      "steps": 150,
+      "initial_loss": 1.7056639194488525,
+      "final_loss": 0.0002412124740658328,
+      "positive_top1_accuracy": 1.0,
+      "passed": true
+    },
+    "with_history": {
+      "epochs": [
+        {
+          "epoch": 1,
+          "train_loss": 1.3751479233700805,
+          "dev_loss": 0.9876591563224792
+        },
+        {
+          "epoch": 2,
+          "train_loss": 1.314481833229767,
+          "dev_loss": 0.9822966024793428
+        },
+        {
+          "epoch": 3,
+          "train_loss": 1.273724053778775,
+          "dev_loss": 0.9889792286116501
+        }
+      ],
+      "retrieval": {
+        "dev": {
+          "queries": 5410.0,
+          "recall@50": 0.02780213009418185,
+          "hitrate@50": 0.036968576709796676,
+          "recall@100": 0.044614030455065574,
+          "hitrate@100": 0.059149722735674676,
+          "coverage@100": 0.20374521957009098
+        }
+      }
+    },
+    "without_history": {
+      "epochs": [
+        {
+          "epoch": 1,
+          "train_loss": 1.3757252837007519,
+          "dev_loss": 0.9884877040468413
+        },
+        {
+          "epoch": 2,
+          "train_loss": 1.3168441125464099,
+          "dev_loss": 0.9813793835968807
+        },
+        {
+          "epoch": 3,
+          "train_loss": 1.276838283597326,
+          "dev_loss": 0.9920616540415533
+        }
+      ],
+      "retrieval": {
+        "dev": {
+          "queries": 5410.0,
+          "recall@50": 0.0246536396443975,
+          "hitrate@50": 0.03234750462107209,
+          "recall@100": 0.04352763841211161,
+          "hitrate@100": 0.05748613678373383,
+          "coverage@100": 0.1749967031517869
+        }
+      }
+    }
+  },
+  "single_rankers": {
+    "long_view": {
+      "epochs": [
+        {
+          "epoch": 1,
+          "train_loss": 0.570382676419271,
+          "dev_auc": 0.7108566186275241
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.538906690623574,
+          "dev_auc": 0.733073104125108
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.5168342894130221,
+          "dev_auc": 0.7386041667111145
+        }
+      ],
+      "dev": {
+        "log_loss": 0.5382277630907294,
+        "average_precision": 0.5206918950868917,
+        "auc": 0.7386041667111145,
+        "gauc": 0.6425492690462297,
+        "valid_groups": 2423,
+        "covered_rows": 18374
+      },
+      "test": {
+        "log_loss": 0.5454504543486315,
+        "average_precision": 0.5104702885754993,
+        "auc": 0.7302687088897103,
+        "gauc": 0.6426759817411014,
+        "valid_groups": 2804,
+        "covered_rows": 25854
+      }
+    },
+    "is_like": {
+      "epochs": [
+        {
+          "epoch": 1,
+          "train_loss": 0.09364541302557053,
+          "dev_auc": 0.7951924576369032
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.0713391596428433,
+          "dev_auc": 0.8561616170325064
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.06072802417947136,
+          "dev_auc": 0.867709928056583
+        }
+      ],
+      "dev": {
+        "log_loss": 0.07475884817124621,
+        "average_precision": 0.22564097997751226,
+        "auc": 0.867709928056583,
+        "gauc": 0.6528628691982872,
+        "valid_groups": 271,
+        "covered_rows": 2291
+      },
+      "test": {
+        "log_loss": 0.0714119519373776,
+        "average_precision": 0.17842985683519888,
+        "auc": 0.8374918361715796,
+        "gauc": 0.6149025699380193,
+        "valid_groups": 312,
+        "covered_rows": 3688
+      }
+    }
+  },
+  "shared_ranker": {
+    "epochs": [
+      {
+        "epoch": 1,
+        "train_loss": 0.6695645042048156,
+        "dev_long_auc": 0.7089852554324056,
+        "dev_like_auc": 0.74240942971572
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.6244821280013514,
+        "dev_long_auc": 0.7327858208079536,
+        "dev_like_auc": 0.8024651453787826
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.5961366439488658,
+        "dev_long_auc": 0.7391194350511504,
+        "dev_like_auc": 0.8238558196496394
+      }
+    ],
+    "dev": {
+      "long_view": {
+        "log_loss": 0.538000850494684,
+        "average_precision": 0.5205303431129087,
+        "auc": 0.7391194350511504,
+        "gauc": 0.6438195150070742,
+        "valid_groups": 2423,
+        "covered_rows": 18374
+      },
+      "is_like": {
+        "log_loss": 0.08001646591100389,
+        "average_precision": 0.1650664324783112,
+        "auc": 0.8238558196496394,
+        "gauc": 0.6566610838517734,
+        "valid_groups": 271,
+        "covered_rows": 2291
+      }
+    },
+    "test": {
+      "long_view": {
+        "log_loss": 0.548403181735633,
+        "average_precision": 0.5059196517169808,
+        "auc": 0.7271418244265007,
+        "gauc": 0.6368057904808151,
+        "valid_groups": 2804,
+        "covered_rows": 25854
+      },
+      "is_like": {
+        "log_loss": 0.07471487076652174,
+        "average_precision": 0.12653510922648797,
+        "auc": 0.785882114474351,
+        "gauc": 0.593052196940988,
+        "valid_groups": 312,
+        "covered_rows": 3688
+      }
+    }
+  },
+  "events": 272354,
+  "users": 5000,
+  "items": 7583
+}

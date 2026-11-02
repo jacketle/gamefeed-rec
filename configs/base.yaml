@@ -1,0 +1,39 @@
+seed: 2026
+
+paths:
+  raw_dir: data/raw/kuairand
+  processed_dir: data/processed/kuairand
+  artifact_dir: artifacts
+  report_dir: reports/generated
+
+data:
+  train_start: "2022-04-08"
+  train_end: "2022-04-21"
+  dev_start: "2022-04-22"
+  dev_end: "2022-04-28"
+  test_start: "2022-04-29"
+  test_end: "2022-05-08"
+  history_length: 20
+  max_negative_per_positive: 4
+  sample_users: 5000
+  chunksize: 200000
+
+model:
+  item_id_dim: 32
+  tag_dim: 16
+  user_id_dim: 16
+  hidden_dim: 128
+  output_dim: 64
+  dropout: 0.1
+  temperature: 0.1
+  batch_size: 128
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  epochs: 3
+  like_loss_weight: 1.0
+
+retrieval:
+  top_k: [50, 100]
+  two_tower_quota: 180
+  popularity_quota: 20
+

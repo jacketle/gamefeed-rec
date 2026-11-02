@@ -1,0 +1,52 @@
+{
+  "model": "BAAI/bge-small-zh-v1.5",
+  "official_max_length": 512,
+  "project_max_length": 128,
+  "items": 7583,
+  "embedding_shape": [
+    7583,
+    512
+  ],
+  "truncated_at_128": 46,
+  "truncated_at_512": 2,
+  "token_length_percentiles": [
+    43.0,
+    78.0,
+    115.0,
+    532.0
+  ],
+  "finite_vectors": true,
+  "max_norm_error": 1.1920928955078125e-07,
+  "pooling_config": {
+    "word_embedding_dimension": 512,
+    "pooling_mode_cls_token": true,
+    "pooling_mode_mean_tokens": false,
+    "pooling_mode_max_tokens": false,
+    "pooling_mode_mean_sqrt_len_tokens": false,
+    "pooling_mode_weightedmean_tokens": false,
+    "pooling_mode_lasttoken": false,
+    "include_prompt": true
+  },
+  "official_cls_max_abs_error": 1.4901161193847656e-07,
+  "cache_reencode_min_cosine": 0.9999999403953552,
+  "comparisons": {
+    "original_128_mean": {
+      "recall@100": 0.036160402546724174,
+      "queries": 5410,
+      "uniform_random_expected_recall@100": 0.013187392852433075,
+      "mean_top100_overlap_with_saved": 0.9999981515711645
+    },
+    "length_512_mean": {
+      "recall@100": 0.036222016841240504,
+      "queries": 5410,
+      "uniform_random_expected_recall@100": 0.013187392852433075
+    },
+    "original_128_recent_weight": {
+      "recall@100": 0.03472787019921956,
+      "queries": 5410,
+      "uniform_random_expected_recall@100": 0.013187392852433075
+    }
+  },
+  "scope": "Developer-set diagnostics on the development split only; original release outputs preserved.",
+  "publication_redacted": true
+}
