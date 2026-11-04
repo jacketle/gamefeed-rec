@@ -2,7 +2,7 @@
 """Build a self-contained HTML experiment report from existing results.
 
 Python / matplotlib only for scientific figures. No new model fitting.
-One observed run (seed 2026); no invented uncertainty intervals.
+Pure experiments use seed 2026; the 1K main comparison uses three paired seeds.
 """
 import base64
 import csv
@@ -25,9 +25,17 @@ ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / 'reports/release'
 OUT = REPORT / 'figures'
 OUT.mkdir(parents=True, exist_ok=True)
-DEST = ROOT / 'deliverables/GameFeed_实验结果与面试图解.html'
+DEST = ROOT / 'deliverables/GameFeed_实验结果图解.html'
 SOURCES = ['release_summary.json', 'fusion_selection.json', 'selected_test_group_analysis.json', 'demo_benchmark.json', 'semantic_audit/audit.json', 'final_evaluation/results.json', 'interpretation_checks/results.json']
 data = {name: json.loads((REPORT/name).read_text(encoding='utf-8')) for name in SOURCES}
+SEQUENCE_REPORT = ROOT / 'reports/kuairand_1k/pilot100/experiment_results.json'
+for sequence_path in [ROOT/'reports/kuairand_1k/full1000/experiment_results.json', SEQUENCE_REPORT]:
+    if sequence_path.exists():
+        sequence_data = json.loads(sequence_path.read_text(encoding='utf-8'))
+        if len(sequence_data.get('final_evaluation', {})) == 4:
+            SEQUENCE_REPORT = sequence_path
+            data['kuairand_1k'] = sequence_data
+            break
 s = data['release_summary.json']
 trials = data['fusion_selection.json']['trials']
 history = data['selected_test_group_analysis.json']['history_groups']
@@ -356,7 +364,6 @@ def build_body():
           for split,label in [('dev','开发'),('test','测试')] for r in [checks['random'][split]]]),
       '<p>每组随机Recall期望＝min(100,当天可用内容数)÷当天可用内容数×可用正例数÷全部正例数，然后逐组平均。开发和测试期全部7583条内容都已可用，没有不可用正例，因此结果恰好等于100÷7583。</p>',
       '<p>这两项开发集对照都未提高召回率：单独增加文本长度或提高近期历史权重，效果均接近原方案。下一步可检查<strong>重复文案和不同兴趣混在一起的影响</strong>。</p>',
-      '<div class="example"><b>实际抽查：</b>视频6讲“王者荣耀妲己”，相近视频7381、3515也讲妲己，说明主题相似检索有效。视频88和2714都带一大段“评论星座”文案，余弦相似度约0.982；重复宣传文字会影响检索。再把不同兴趣的视频向量平均，可能削弱具体兴趣。可进一步比较清理宣传文字、分别表示不同兴趣后的效果。</div>',
       '</section>']
     blocks += ['<section id="fusion"><div class="section-head"><h2>融合方案如何选择</h2></div>',
       chart('02_fusion','图2｜七种融合设置在开发集上的效果。','开发集共5,410组。各方案返回100条不同内容，优先比较Recall@100，相同时比较Recall@50。'),
@@ -408,9 +415,6 @@ def build_body():
       <ul class="references"><li><a href="https://github.com/chongminggao/KuaiRand">KuaiRand官方代码与字段说明</a>：数据来源。</li><li><a href="https://kuairand.com/">KuaiRand项目主页</a>：数据版本与标签。</li><li><a href="https://huggingface.co/BAAI/bge-small-zh-v1.5">BGE-small-zh-v1.5模型卡</a>：实际使用的文本编码器。</li><li><a href="https://github.com/facebookresearch/faiss/wiki/Getting-started">Faiss官方入门</a>：向量检索扩展阅读。</li><li><a href="https://research.google/pubs/modeling-task-relationships-in-multi-task-learning-with-multi-gate-mixture-of-experts/">MMoE论文</a>：任务关系与专家门控扩展阅读。</li></ul>
       <details><summary>报告生成方式与文件位置</summary><p>运行 scripts/build_experiment_html.py 生成本页。实验结果位于 reports/release，训练配置位于 configs/release.yaml。图表和公式随HTML保存，可离线阅读。</p></details></section>''']
     result = '\n'.join(blocks)
-    if not questions:
-        result = re.sub(r'', '', result, flags=re.S)
-        result = re.sub(r'', '', result)
     if audit.get('publication_redacted'):
         result = re.sub(r'<details><summary>具体哪些用户、哪些日期发生变化？</summary>.*?</details>', '', result, flags=re.S)
         result = re.sub(r'<div class="example"><b>实际抽查：</b>.*?</div>', '', result, flags=re.S)
@@ -423,27 +427,73 @@ def build_body():
         result = result.replace(anchor, anchor+f'<a class="arch-crosslink" href="#{target}">回看结构图：{label} ↗</a>')
     return result
 
+def sequence_section():
+    """Append completed 1K results using the existing report's table/figure style."""
+    r = data.get('kuairand_1k')
+    if not r:
+        return ''
+    names = {'B0':'基础模型', 'B1':'历史均值', 'B2':'候选相关加权'}
+    rows = []
+    for mode in names:
+        dev = r['final_evaluation']['dev_standard']['summary'][mode]
+        test = r['final_evaluation']['test_standard']['summary'][mode]
+        rows.append([names[mode], f'{dev["gauc"]["mean"]:.5f}',
+                     f'{test["gauc"]["mean"]:.5f} ± {test["gauc"]["std"]:.5f}', f'{test["auc"]["mean"]:.5f}'])
+    delta = r['final_evaluation']['test_standard']['B2_minus_B1']
+    lo, hi = delta['ci95']
+    chosen = names[r['selection']['chosen']]
+    users = r['preparation']['sample_users']
+    train_rows = next(s['rows'] for s in r['preparation']['splits'] if s['split']=='train' and s['random']==0)
+    population = f'覆盖KuaiRand-1K全部{users}名日志用户' if users==1000 else f'从KuaiRand-1K历史期用户中固定选取{users}名'
+    parts = ['<section id="history-1k"><div class="section-head"><h2>1K补充实验：历史怎样参与预测</h2></div>',
+        f'<p>{population}，保留其全部选定时期记录。使用{train_rows:,}条常规训练曝光，预测观看是否达标。三个模型都使用相同的用户、视频ID、视频标签、场景和时间特征，区别在于怎样使用最近20条历史。</p>',
+        '<p>基础模型不输入历史内容；历史均值模型对历史内容向量求平均；候选相关加权模型让当前候选参与历史权重计算。每种模型运行三个配对种子，最多5轮，按开发集保存最佳模型。</p>',
+        table(['模型','开发GAUC均值','测试GAUC均值 ± 种子标准差','测试AUC均值'],rows),
+        f'<div class="finding"><p>开发集选择：<b>{chosen}</b>。加权相对均值的测试GAUC差为{delta["mean_difference"]*100:.3f}个百分点，按用户配对抽样2,000次的95%区间为[{lo*100:.3f}, {hi*100:.3f}]个百分点。</p></div>']
+    for name, caption in [('01_three_seed_comparison','三个点分别对应三个训练种子，横线表示均值。'),
+                          ('02_learning_curves','种子2026的训练误差与开发效果；各模型均展示全部已运行轮次。'),
+                          ('03_scenario_differences','按训练曝光占比5%分成两个面板，纵轴分别显示。点是相同场景、相同种子的加权减均值GAUC差；n为测试曝光数。')]:
+        image_path = SEQUENCE_REPORT.parent / 'figures' / f'{name}.svg'
+        parts.append(f'<figure><img class="chart" src="{uri(image_path,"image/svg+xml")}" alt="{caption}"><figcaption>{caption}</figcaption></figure>')
+    c=r['training']['B2_seed2026']['dev_coverage']
+    parts.append(f'<p>开发候选中，{c["candidate_trained"]:.1%}的视频ID参与过有效训练，{c["tag_available"]:.1%}具有可用标签。未训练ID使用零向量并保留标签，避免把随机向量误当成已学到的内容特征。</p>')
+    report_file=SEQUENCE_REPORT.with_suffix('.md').relative_to(ROOT).as_posix()
+    parts.append(f'<p>这轮评价对象是{users}用户的实际曝光记录。Pure部分评价召回列表，两组数字分别解释。完整随机展示、场景、反馈延迟检查和复现步骤见本地 {report_file}。</p></section>')
+    return '\n'.join(parts)
+
+
 def main():
+    from report_history_followup import build as build_history_followup
+    followup = build_history_followup()
+    if 'kuairand_1k' in data:
+        from report_sequence_experiment import run as render_sequence
+        render_sequence(SEQUENCE_REPORT.parent)
     subprocess.run([sys.executable, str(ROOT/'scripts/build_architecture_figures.py')], check=True)
     make_figures()
     make_formulas()
     with (OUT/'source_data.csv').open('w',encoding='utf-8-sig',newline='') as f:
         writer=csv.DictWriter(f,fieldnames=['figure','split','method','metric','value']);writer.writeheader();writer.writerows(records)
     provenance = {name: hashlib.sha256((REPORT/name).read_bytes()).hexdigest() for name in SOURCES}
-    if questions:
-        provenance['questions_sha256'] = hashlib.sha256(question_file.read_bytes()).hexdigest()
+    if 'kuairand_1k' in data:
+        provenance['kuairand_1k_sha256'] = hashlib.sha256(SEQUENCE_REPORT.read_bytes()).hexdigest()
+    if followup:
+        provenance['history_followup_sources'] = json.loads((ROOT/'reports/kuairand_1k/item_l2/figures/source_manifest.json').read_text(encoding='utf-8'))
     (OUT/'source_manifest.json').write_text(json.dumps(provenance,indent=2),encoding='utf-8')
     template = (ROOT/'src/gamefeed/report_web/template.html').read_text(encoding='utf-8')
-    if not questions:
-        template = re.sub(r'', '', template)
     flow = [uri(OUT/f'flow_{i}.png','image/png') for i in range(5)]
-    document = template.replace('__BODY__',build_body()).replace('__FLOW_IMAGES__',json.dumps(flow))
+    body = build_body()
+    if 'kuairand_1k' in data:
+        body = body.replace('<section id="glossary">', sequence_section()+followup+'<section id="glossary">', 1)
+        template = template.replace('<a href="#diagnostics">', '<a href="#history-1k">1K历史建模对照</a><a href="#diagnostics">', 1)
+        if followup:
+            template = template.replace('<a href="#diagnostics">', '<a href="#history-followup">历史模型排查案例</a><a href="#diagnostics">', 1)
+    document = template.replace('__BODY__',body).replace('__FLOW_IMAGES__',json.dumps(flow))
     web = ROOT/'src/gamefeed/report_web'
     document = document.replace('</style>', (web/'editorial.css').read_text(encoding='utf-8')+'\n</style>', 1)
     document = document.replace('</body>', '<script>'+ (web/'editorial.js').read_text(encoding='utf-8')+'</script></body>')
     DEST.parent.mkdir(parents=True,exist_ok=True)
     DEST.write_text(document,encoding='utf-8')
-    print(json.dumps({'html':str(DEST),'bytes':DEST.stat().st_size,'figures':8,'architecture_figures':4,'formulas':len(FORMULAS),'questions':len(questions)},ensure_ascii=False))
+    print(json.dumps({'html':str(DEST),'bytes':DEST.stat().st_size,'figures':8,'architecture_figures':4,'formulas':len(FORMULAS)},ensure_ascii=False))
 
 if __name__ == '__main__':
     main()

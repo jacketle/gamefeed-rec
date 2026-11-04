@@ -1,0 +1,976 @@
+{
+  "curves": {
+    "B2_seed2026": [
+      {
+        "epoch": 1,
+        "train_loss": 0.45553694188700744,
+        "dev_loss": 0.480358749628067,
+        "dev_gauc": 0.6880072299920685
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.42233519160970745,
+        "dev_loss": 0.4916284680366516,
+        "dev_gauc": 0.6862072371226776
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.4000801853884131,
+        "dev_loss": 0.49986785650253296,
+        "dev_gauc": 0.6821373001552111
+      }
+    ],
+    "B0_seed2026": [
+      {
+        "epoch": 1,
+        "train_loss": 0.46663427371939975,
+        "dev_loss": 0.46175092458724976,
+        "dev_gauc": 0.6916549868075013
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.4573643725590163,
+        "dev_loss": 0.46062684059143066,
+        "dev_gauc": 0.6941301680635
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.4525839746529112,
+        "dev_loss": 0.46370652318000793,
+        "dev_gauc": 0.6946067916295915
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.44439931800143384,
+        "dev_loss": 0.466390460729599,
+        "dev_gauc": 0.6922690779700053
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.43403920652911626,
+        "dev_loss": 0.4699808657169342,
+        "dev_gauc": 0.6904120133046008
+      }
+    ],
+    "B1_seed2026": [
+      {
+        "epoch": 1,
+        "train_loss": 0.4553913815840859,
+        "dev_loss": 0.48154446482658386,
+        "dev_gauc": 0.6872953561946671
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.42282578653238023,
+        "dev_loss": 0.4908389151096344,
+        "dev_gauc": 0.6858767987507668
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.4027613397277326,
+        "dev_loss": 0.5008671879768372,
+        "dev_gauc": 0.6844637798895447
+      }
+    ],
+    "B0_seed2027": [
+      {
+        "epoch": 1,
+        "train_loss": 0.46604590167064236,
+        "dev_loss": 0.4624827802181244,
+        "dev_gauc": 0.6921148263670021
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.45683443127948153,
+        "dev_loss": 0.4621589779853821,
+        "dev_gauc": 0.6950187615405253
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.45095090757754785,
+        "dev_loss": 0.4643712341785431,
+        "dev_gauc": 0.6956259272070477
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.44186156396343945,
+        "dev_loss": 0.4668644964694977,
+        "dev_gauc": 0.6940135629137075
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.431189292828341,
+        "dev_loss": 0.46948516368865967,
+        "dev_gauc": 0.6918851301958495
+      }
+    ],
+    "B1_seed2027": [
+      {
+        "epoch": 1,
+        "train_loss": 0.4547750910692499,
+        "dev_loss": 0.47958728671073914,
+        "dev_gauc": 0.6882953389748352
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.42239360912590457,
+        "dev_loss": 0.49269747734069824,
+        "dev_gauc": 0.6861023202763572
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.4024324901745162,
+        "dev_loss": 0.5041783452033997,
+        "dev_gauc": 0.6845729790518478
+      }
+    ],
+    "B2_seed2027": [
+      {
+        "epoch": 1,
+        "train_loss": 0.45465754366260674,
+        "dev_loss": 0.47985953092575073,
+        "dev_gauc": 0.6881729039363054
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.42140547030629844,
+        "dev_loss": 0.49413347244262695,
+        "dev_gauc": 0.6855834620605137
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.40043702538207454,
+        "dev_loss": 0.5081325173377991,
+        "dev_gauc": 0.6830300598749516
+      }
+    ],
+    "B0_seed2028": [
+      {
+        "epoch": 1,
+        "train_loss": 0.4666179653668845,
+        "dev_loss": 0.4611610174179077,
+        "dev_gauc": 0.6909244391458298
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.45732250119823864,
+        "dev_loss": 0.45968377590179443,
+        "dev_gauc": 0.6944778377152987
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.45161220335788566,
+        "dev_loss": 0.4614929258823395,
+        "dev_gauc": 0.6943495535652929
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.4426758712898053,
+        "dev_loss": 0.46452829241752625,
+        "dev_gauc": 0.6932072862710834
+      }
+    ],
+    "B1_seed2028": [
+      {
+        "epoch": 1,
+        "train_loss": 0.454807794820609,
+        "dev_loss": 0.47440725564956665,
+        "dev_gauc": 0.6862982438891209
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.4225928324201651,
+        "dev_loss": 0.49032747745513916,
+        "dev_gauc": 0.6867015249869263
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.4021679991420878,
+        "dev_loss": 0.4993726909160614,
+        "dev_gauc": 0.6838691497330673
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.3847130025340348,
+        "dev_loss": 0.501849353313446,
+        "dev_gauc": 0.6808679623736574
+      }
+    ],
+    "B2_seed2028": [
+      {
+        "epoch": 1,
+        "train_loss": 0.456053736892389,
+        "dev_loss": 0.4718843698501587,
+        "dev_gauc": 0.68762729826991
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.42376659790825155,
+        "dev_loss": 0.4866441786289215,
+        "dev_gauc": 0.6865377438779848
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.399398105611052,
+        "dev_loss": 0.49802127480506897,
+        "dev_gauc": 0.6822585887841855
+      }
+    ]
+  },
+  "groups": {
+    "dev_random": {
+      "rows": 14333,
+      "users": 907,
+      "positive_rate": 0.09049047652270983,
+      "tabs": {
+        "1": 14220,
+        "11": 93,
+        "2": 16,
+        "14": 4
+      },
+      "models": {
+        "B0": {
+          "auc": 0.7134266462861992,
+          "gauc": 0.5615538049089032,
+          "log_loss": 0.5651854475339254,
+          "user_coverage": 0.4862183020948181,
+          "exposure_coverage": 0.730621642363776,
+          "mean_probability": 0.4028841257095337,
+          "seed_gauc": [
+            0.5562971245958154,
+            0.5533738077942549,
+            0.5749904823366392
+          ]
+        },
+        "B1": {
+          "auc": 0.7063619327818369,
+          "gauc": 0.5677325234263986,
+          "log_loss": 0.5892438888549805,
+          "user_coverage": 0.4862183020948181,
+          "exposure_coverage": 0.730621642363776,
+          "mean_probability": 0.42980828881263733,
+          "seed_gauc": [
+            0.5690481858243774,
+            0.5596458305006918,
+            0.5745035539541266
+          ]
+        },
+        "B2": {
+          "auc": 0.7065144570490953,
+          "gauc": 0.560597491298942,
+          "log_loss": 0.5683980782826742,
+          "user_coverage": 0.4862183020948181,
+          "exposure_coverage": 0.730621642363776,
+          "mean_probability": 0.415115088224411,
+          "seed_gauc": [
+            0.5700489359150563,
+            0.5502325458056795,
+            0.5615109921760902
+          ]
+        }
+      },
+      "B1_minus_B0": {
+        "mean_difference": 0.006178718517495439,
+        "ci95": [
+          -0.012025065125447194,
+          0.023053793186099455
+        ],
+        "valid_bootstrap": 2000,
+        "users": 907,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      },
+      "B2_minus_B0": {
+        "mean_difference": -0.0009563136099611471,
+        "ci95": [
+          -0.018843766531686103,
+          0.01672774252985958
+        ],
+        "valid_bootstrap": 2000,
+        "users": 907,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      }
+    },
+    "dev_standard_all": {
+      "rows": 1642223,
+      "users": 986,
+      "positive_rate": 0.2591645592590044,
+      "tabs": {
+        "1": 1107434,
+        "0": 334552,
+        "4": 125879,
+        "2": 48577,
+        "6": 14363,
+        "3": 3813,
+        "11": 2206,
+        "8": 1808,
+        "12": 1349,
+        "5": 1215,
+        "7": 617,
+        "9": 232,
+        "14": 92,
+        "10": 86
+      },
+      "models": {
+        "B0": {
+          "auc": 0.7947548236640375,
+          "gauc": 0.694903518850646,
+          "log_loss": 0.4625871777534485,
+          "user_coverage": 0.9929006085192698,
+          "exposure_coverage": 0.9996346415803457,
+          "mean_probability": 0.2803405821323395,
+          "seed_gauc": [
+            0.6946067916295915,
+            0.6956259272070477,
+            0.6944778377152987
+          ]
+        },
+        "B1": {
+          "auc": 0.7858789235239588,
+          "gauc": 0.6874307400521428,
+          "log_loss": 0.48381974299748737,
+          "user_coverage": 0.9929006085192698,
+          "exposure_coverage": 0.9996346415803457,
+          "mean_probability": 0.3313855826854706,
+          "seed_gauc": [
+            0.6872953561946671,
+            0.6882953389748352,
+            0.6867015249869263
+          ]
+        },
+        "B2": {
+          "auc": 0.7879308457592269,
+          "gauc": 0.6879358107327613,
+          "log_loss": 0.4773675501346588,
+          "user_coverage": 0.9929006085192698,
+          "exposure_coverage": 0.9996346415803457,
+          "mean_probability": 0.31794309616088867,
+          "seed_gauc": [
+            0.6880072299920685,
+            0.6881729039363054,
+            0.68762729826991
+          ]
+        }
+      },
+      "B1_minus_B0": {
+        "mean_difference": -0.00747277879850323,
+        "ci95": [
+          -0.009337005592827853,
+          -0.005925757770787946
+        ],
+        "valid_bootstrap": 2000,
+        "users": 986,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      },
+      "B2_minus_B0": {
+        "mean_difference": -0.0069677081178847085,
+        "ci95": [
+          -0.008844697570529922,
+          -0.0053399926531864225
+        ],
+        "valid_bootstrap": 2000,
+        "users": 986,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      }
+    },
+    "dev_standard_random_tabs": {
+      "rows": 1158309,
+      "users": 984,
+      "positive_rate": 0.3096755701630567,
+      "tabs": {
+        "1": 1107434,
+        "2": 48577,
+        "11": 2206,
+        "14": 92
+      },
+      "models": {
+        "B0": {
+          "auc": 0.741050445474155,
+          "gauc": 0.6214806703585939,
+          "log_loss": 0.5411207477251688,
+          "user_coverage": 0.9898373983739838,
+          "exposure_coverage": 0.9994820035068362,
+          "mean_probability": 0.33585724234580994,
+          "seed_gauc": [
+            0.6209225325502996,
+            0.6224155444207389,
+            0.6211039341047431
+          ]
+        },
+        "B1": {
+          "auc": 0.7289175381378948,
+          "gauc": 0.6128286888858842,
+          "log_loss": 0.5656121571858724,
+          "user_coverage": 0.9898373983739838,
+          "exposure_coverage": 0.9994820035068362,
+          "mean_probability": 0.39275434613227844,
+          "seed_gauc": [
+            0.6126800147948207,
+            0.6139198673942883,
+            0.6118861844685433
+          ]
+        },
+        "B2": {
+          "auc": 0.7314721696257064,
+          "gauc": 0.6131938707497654,
+          "log_loss": 0.5580553412437439,
+          "user_coverage": 0.9898373983739838,
+          "exposure_coverage": 0.9994820035068362,
+          "mean_probability": 0.3759167194366455,
+          "seed_gauc": [
+            0.6137414455048036,
+            0.613607328194657,
+            0.6122328385498356
+          ]
+        }
+      },
+      "B1_minus_B0": {
+        "mean_difference": -0.008651981472709742,
+        "ci95": [
+          -0.010342422596122097,
+          -0.006925236064777374
+        ],
+        "valid_bootstrap": 2000,
+        "users": 984,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      },
+      "B2_minus_B0": {
+        "mean_difference": -0.008286799608828423,
+        "ci95": [
+          -0.009964369585542804,
+          -0.006575283326719203
+        ],
+        "valid_bootstrap": 2000,
+        "users": 984,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      }
+    },
+    "dev_standard_random_tabs_users": {
+      "rows": 1095800,
+      "users": 907,
+      "positive_rate": 0.31090436210987404,
+      "tabs": {
+        "1": 1048469,
+        "2": 45033,
+        "11": 2206,
+        "14": 92
+      },
+      "models": {
+        "B0": {
+          "auc": 0.7415844417148758,
+          "gauc": 0.6221769156606749,
+          "log_loss": 0.5417830546696981,
+          "user_coverage": 0.9955898566703419,
+          "exposure_coverage": 0.9994770943602848,
+          "mean_probability": 0.33822861313819885,
+          "seed_gauc": [
+            0.6216226608147211,
+            0.6231302606658478,
+            0.6217778255014559
+          ]
+        },
+        "B1": {
+          "auc": 0.7296049045615632,
+          "gauc": 0.6134896746491793,
+          "log_loss": 0.5662287473678589,
+          "user_coverage": 0.9955898566703419,
+          "exposure_coverage": 0.9994770943602848,
+          "mean_probability": 0.39452064037323,
+          "seed_gauc": [
+            0.6132755063018457,
+            0.6145065545610225,
+            0.6126869630846695
+          ]
+        },
+        "B2": {
+          "auc": 0.732197805298966,
+          "gauc": 0.6138301313725053,
+          "log_loss": 0.5585669676462809,
+          "user_coverage": 0.9955898566703419,
+          "exposure_coverage": 0.9994770943602848,
+          "mean_probability": 0.37757566571235657,
+          "seed_gauc": [
+            0.6143289173677622,
+            0.6142238662398702,
+            0.6129376105098835
+          ]
+        }
+      },
+      "B1_minus_B0": {
+        "mean_difference": -0.008687241011495579,
+        "ci95": [
+          -0.01038924879617186,
+          -0.006934350191660532
+        ],
+        "valid_bootstrap": 2000,
+        "users": 907,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      },
+      "B2_minus_B0": {
+        "mean_difference": -0.008346784288169574,
+        "ci95": [
+          -0.010072531957296692,
+          -0.006615312034278159
+        ],
+        "valid_bootstrap": 2000,
+        "users": 907,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      }
+    },
+    "dev_standard_random_tabs_users_videos": {
+      "rows": 1679,
+      "users": 553,
+      "positive_rate": 0.34187016081000593,
+      "tabs": {
+        "1": 1643,
+        "2": 32,
+        "11": 4
+      },
+      "models": {
+        "B0": {
+          "auc": 0.6949437936525454,
+          "gauc": 0.5554792235486636,
+          "log_loss": 0.6024631460507711,
+          "user_coverage": 0.37613019891500904,
+          "exposure_coverage": 0.6491959499702203,
+          "mean_probability": 0.39295494556427,
+          "seed_gauc": [
+            0.561785529402581,
+            0.5490584529709807,
+            0.5555936882724292
+          ]
+        },
+        "B1": {
+          "auc": 0.6824422827292268,
+          "gauc": 0.5186151370744855,
+          "log_loss": 0.6206753849983215,
+          "user_coverage": 0.37613019891500904,
+          "exposure_coverage": 0.6491959499702203,
+          "mean_probability": 0.44035235047340393,
+          "seed_gauc": [
+            0.5292459883783832,
+            0.5100774865754303,
+            0.5165219362696427
+          ]
+        },
+        "B2": {
+          "auc": 0.6838649155722326,
+          "gauc": 0.5217400158162575,
+          "log_loss": 0.6089858611424764,
+          "user_coverage": 0.37613019891500904,
+          "exposure_coverage": 0.6491959499702203,
+          "mean_probability": 0.4194258153438568,
+          "seed_gauc": [
+            0.5040877284162636,
+            0.5190899481551173,
+            0.5420423708773915
+          ]
+        }
+      },
+      "B1_minus_B0": {
+        "mean_difference": -0.036864086474178215,
+        "ci95": [
+          -0.06952609488195953,
+          -0.004671536984475788
+        ],
+        "valid_bootstrap": 2000,
+        "users": 553,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      },
+      "B2_minus_B0": {
+        "mean_difference": -0.03373920773240609,
+        "ci95": [
+          -0.06349986831341115,
+          -0.002849314596775997
+        ],
+        "valid_bootstrap": 2000,
+        "users": 553,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      }
+    },
+    "test_random": {
+      "rows": 12366,
+      "users": 857,
+      "positive_rate": 0.08377810124535015,
+      "tabs": {
+        "1": 12336,
+        "11": 22,
+        "2": 8
+      },
+      "models": {
+        "B0": {
+          "auc": 0.6985206016759414,
+          "gauc": 0.56867076049567,
+          "log_loss": 0.5537129044532776,
+          "user_coverage": 0.4655775962660444,
+          "exposure_coverage": 0.7111434578683488,
+          "mean_probability": 0.39348506927490234,
+          "seed_gauc": [
+            0.5677298175956961,
+            0.5674141055458214,
+            0.5708683583454925
+          ]
+        },
+        "B1": {
+          "auc": 0.694873179824636,
+          "gauc": 0.5826855589459076,
+          "log_loss": 0.5786186655362447,
+          "user_coverage": 0.4655775962660444,
+          "exposure_coverage": 0.7111434578683488,
+          "mean_probability": 0.42259716987609863,
+          "seed_gauc": [
+            0.5810486458557944,
+            0.5854183080808735,
+            0.5815897229010547
+          ]
+        },
+        "B2": {
+          "auc": 0.6965342691070845,
+          "gauc": 0.5796277464342429,
+          "log_loss": 0.5566371281941732,
+          "user_coverage": 0.4655775962660444,
+          "exposure_coverage": 0.7111434578683488,
+          "mean_probability": 0.40759190917015076,
+          "seed_gauc": [
+            0.5769097256121343,
+            0.5792602025492746,
+            0.5827133111413197
+          ]
+        }
+      },
+      "B1_minus_B0": {
+        "mean_difference": 0.014014798450237518,
+        "ci95": [
+          0.00048689429953174,
+          0.029793970372606553
+        ],
+        "valid_bootstrap": 2000,
+        "users": 857,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      },
+      "B2_minus_B0": {
+        "mean_difference": 0.01095698593857285,
+        "ci95": [
+          -0.002942951295429089,
+          0.026625011787820944
+        ],
+        "valid_bootstrap": 2000,
+        "users": 857,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      }
+    },
+    "test_standard_all": {
+      "rows": 1188322,
+      "users": 978,
+      "positive_rate": 0.25956516836345706,
+      "tabs": {
+        "1": 801452,
+        "0": 230197,
+        "4": 95253,
+        "2": 40638,
+        "6": 11690,
+        "3": 3393,
+        "8": 2059,
+        "12": 1549,
+        "5": 1011,
+        "11": 450,
+        "7": 423,
+        "9": 136,
+        "10": 68,
+        "13": 3
+      },
+      "models": {
+        "B0": {
+          "auc": 0.7900179223281952,
+          "gauc": 0.6907624391722903,
+          "log_loss": 0.4671132763226827,
+          "user_coverage": 0.9918200408997956,
+          "exposure_coverage": 0.9999705467036714,
+          "mean_probability": 0.2800736129283905,
+          "seed_gauc": [
+            0.6909143803428854,
+            0.6902405852169653,
+            0.6911323519570202
+          ]
+        },
+        "B1": {
+          "auc": 0.7834966558426185,
+          "gauc": 0.6870475880113838,
+          "log_loss": 0.48611800869305927,
+          "user_coverage": 0.9918200408997956,
+          "exposure_coverage": 0.9999705467036714,
+          "mean_probability": 0.3324090838432312,
+          "seed_gauc": [
+            0.6868622682986558,
+            0.6876991881034064,
+            0.6865813076320891
+          ]
+        },
+        "B2": {
+          "auc": 0.7854717176370457,
+          "gauc": 0.6879478881419225,
+          "log_loss": 0.4797513286272685,
+          "user_coverage": 0.9918200408997956,
+          "exposure_coverage": 0.9999705467036714,
+          "mean_probability": 0.319040447473526,
+          "seed_gauc": [
+            0.6884594220749976,
+            0.6870898769757647,
+            0.6882943653750052
+          ]
+        }
+      },
+      "B1_minus_B0": {
+        "mean_difference": -0.00371485116090656,
+        "ci95": [
+          -0.004900502066727898,
+          -0.0024764840334910313
+        ],
+        "valid_bootstrap": 2000,
+        "users": 978,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      },
+      "B2_minus_B0": {
+        "mean_difference": -0.002814551030367786,
+        "ci95": [
+          -0.004144951310007607,
+          -0.0013296453804500948
+        ],
+        "valid_bootstrap": 2000,
+        "users": 978,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      }
+    },
+    "test_standard_random_tabs": {
+      "rows": 842540,
+      "users": 975,
+      "positive_rate": 0.3074417831794336,
+      "tabs": {
+        "1": 801452,
+        "2": 40638,
+        "11": 450
+      },
+      "models": {
+        "B0": {
+          "auc": 0.740673618763133,
+          "gauc": 0.6203491638304609,
+          "log_loss": 0.5398951371510824,
+          "user_coverage": 0.9897435897435898,
+          "exposure_coverage": 0.9999501507346832,
+          "mean_probability": 0.33146932721138,
+          "seed_gauc": [
+            0.6205196363956738,
+            0.6200719042704983,
+            0.6204559508252107
+          ]
+        },
+        "B1": {
+          "auc": 0.7306175729969769,
+          "gauc": 0.6157863703981957,
+          "log_loss": 0.5634559392929077,
+          "user_coverage": 0.9897435897435898,
+          "exposure_coverage": 0.9999501507346832,
+          "mean_probability": 0.39055052399635315,
+          "seed_gauc": [
+            0.6152849972520704,
+            0.6169321436865722,
+            0.6151419702559447
+          ]
+        },
+        "B2": {
+          "auc": 0.7333473711905486,
+          "gauc": 0.6166080920582631,
+          "log_loss": 0.5558169881502787,
+          "user_coverage": 0.9897435897435898,
+          "exposure_coverage": 0.9999501507346832,
+          "mean_probability": 0.37405887246131897,
+          "seed_gauc": [
+            0.6172775740616038,
+            0.6157162257515463,
+            0.6168304763616393
+          ]
+        }
+      },
+      "B1_minus_B0": {
+        "mean_difference": -0.004562793432265117,
+        "ci95": [
+          -0.006034197500655744,
+          -0.0030755338953882857
+        ],
+        "valid_bootstrap": 2000,
+        "users": 975,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      },
+      "B2_minus_B0": {
+        "mean_difference": -0.003741071772197817,
+        "ci95": [
+          -0.0054421068713627965,
+          -0.001823262022015174
+        ],
+        "valid_bootstrap": 2000,
+        "users": 975,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      }
+    },
+    "test_standard_random_tabs_users": {
+      "rows": 772455,
+      "users": 857,
+      "positive_rate": 0.30642561702623455,
+      "tabs": {
+        "1": 743710,
+        "2": 28307,
+        "11": 438
+      },
+      "models": {
+        "B0": {
+          "auc": 0.7437357835823019,
+          "gauc": 0.6200946662359806,
+          "log_loss": 0.5370006362597147,
+          "user_coverage": 0.9988331388564761,
+          "exposure_coverage": 0.9999987054262061,
+          "mean_probability": 0.3307216465473175,
+          "seed_gauc": [
+            0.6204866650509809,
+            0.619821184820493,
+            0.6199761488364681
+          ]
+        },
+        "B1": {
+          "auc": 0.7336075880034741,
+          "gauc": 0.6156534674613104,
+          "log_loss": 0.5611519018809,
+          "user_coverage": 0.9988331388564761,
+          "exposure_coverage": 0.9999987054262061,
+          "mean_probability": 0.3897753953933716,
+          "seed_gauc": [
+            0.6149032084612882,
+            0.6169105179717274,
+            0.6151466759509159
+          ]
+        },
+        "B2": {
+          "auc": 0.7366411677600078,
+          "gauc": 0.6165759172258399,
+          "log_loss": 0.5532258550326029,
+          "user_coverage": 0.9988331388564761,
+          "exposure_coverage": 0.9999987054262061,
+          "mean_probability": 0.3730494976043701,
+          "seed_gauc": [
+            0.6169980889614913,
+            0.6156312963531537,
+            0.6170983663628746
+          ]
+        }
+      },
+      "B1_minus_B0": {
+        "mean_difference": -0.004441198774670147,
+        "ci95": [
+          -0.005981088758474735,
+          -0.0029172462285877794
+        ],
+        "valid_bootstrap": 2000,
+        "users": 857,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      },
+      "B2_minus_B0": {
+        "mean_difference": -0.0035187490101407496,
+        "ci95": [
+          -0.005440204545505942,
+          -0.0014480212939170607
+        ],
+        "valid_bootstrap": 2000,
+        "users": 857,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      }
+    },
+    "test_standard_random_tabs_users_videos": {
+      "rows": 945,
+      "users": 400,
+      "positive_rate": 0.33650793650793653,
+      "tabs": {
+        "1": 926,
+        "2": 19
+      },
+      "models": {
+        "B0": {
+          "auc": 0.7251545578258587,
+          "gauc": 0.6314762999567928,
+          "log_loss": 0.5668566425641378,
+          "user_coverage": 0.2925,
+          "exposure_coverage": 0.5153439153439153,
+          "mean_probability": 0.37150296568870544,
+          "seed_gauc": [
+            0.6114311538336179,
+            0.6598459206775428,
+            0.6231518253592176
+          ]
+        },
+        "B1": {
+          "auc": 0.7209048445394027,
+          "gauc": 0.6061108562135257,
+          "log_loss": 0.5916065772374471,
+          "user_coverage": 0.2925,
+          "exposure_coverage": 0.5153439153439153,
+          "mean_probability": 0.4276396334171295,
+          "seed_gauc": [
+            0.5793091690422286,
+            0.6199605493753338,
+            0.6190628502230145
+          ]
+        },
+        "B2": {
+          "auc": 0.7198599701082323,
+          "gauc": 0.6055168612663479,
+          "log_loss": 0.5839515924453735,
+          "user_coverage": 0.2925,
+          "exposure_coverage": 0.5153439153439153,
+          "mean_probability": 0.405911922454834,
+          "seed_gauc": [
+            0.594632295607655,
+            0.5992911548866374,
+            0.6226271333047514
+          ]
+        }
+      },
+      "B1_minus_B0": {
+        "mean_difference": -0.025365443743267144,
+        "ci95": [
+          -0.06780704448400159,
+          0.01633536639029434
+        ],
+        "valid_bootstrap": 2000,
+        "users": 400,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      },
+      "B2_minus_B0": {
+        "mean_difference": -0.02595943869044485,
+        "ci95": [
+          -0.06610304345750861,
+          0.011371193201146313
+        ],
+        "valid_bootstrap": 2000,
+        "users": 400,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      }
+    }
+  }
+}

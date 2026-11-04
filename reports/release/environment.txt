@@ -1,9 +1,0 @@
-Python 3.9; Windows; CPU
-numpy==2.0.2
-pandas==2.3.3
-pyarrow==21.0.0
-PyYAML==6.0.2
-scikit-learn==1.6.1
-torch==2.8.0
-sentence-transformers==5.1.2
-transformers==4.57.6

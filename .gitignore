@@ -52,7 +52,6 @@ deliverables/tone_revision_manifest.json
 !/reports/release/architecture/03_ranker_comparison.png
 !/reports/release/architecture/04_bge_retrieval.png
 !/reports/release/demo_benchmark.json
-!/reports/release/environment.txt
 !/reports/release/experiment_summary.md
 !/reports/release/figures/01_retrieval.png
 !/reports/release/figures/02_fusion.png
@@ -72,7 +71,7 @@ deliverables/tone_revision_manifest.json
 !/reports/release/semantic_audit/audit.json
 
 /deliverables/**
-!/deliverables/GameFeed_实验结果与面试图解.html
+!/deliverables/GameFeed_实验结果图解.html
 !/deliverables/GameFeed_模型结构图.html
 !/deliverables/GameFeed_模型结构图.pdf
 
@@ -81,3 +80,28 @@ deliverables/tone_revision_manifest.json
 /docs/PROJECT_WALKTHROUGH.md
 /docs/RESUME_AND_INTERVIEW.md
 /docs/report_questions.json
+
+# Aggregate 1K results and selected figures
+!/reports/kuairand_1k/
+!/reports/kuairand_1k/full1000/
+!/reports/kuairand_1k/full1000/figures/
+!/reports/kuairand_1k/history_mask50/
+!/reports/kuairand_1k/item_l2/
+!/reports/kuairand_1k/item_l2/l2_0.001/
+!/reports/kuairand_1k/item_l2/l2_0.01/
+!/reports/kuairand_1k/item_l2/figures/
+!/reports/kuairand_1k/full1000/experiment_results.json
+!/reports/kuairand_1k/full1000/history_diagnosis.json
+!/reports/kuairand_1k/history_mask50/experiment_results.json
+!/reports/kuairand_1k/history_mask50/comparison.json
+!/reports/kuairand_1k/item_l2/l2_0.001/experiment_results.json
+!/reports/kuairand_1k/item_l2/l2_0.01/experiment_results.json
+!/reports/kuairand_1k/item_l2/comparison.json
+!/reports/kuairand_1k/full1000/experiment_results.md
+!/reports/kuairand_1k/item_l2/history_followup_case.md
+!/reports/kuairand_1k/item_l2/comparison_table.csv
+!/reports/kuairand_1k/item_l2/figures/history_followup_curves.png
+!/reports/kuairand_1k/item_l2/figures/history_followup_source.csv
+!/reports/kuairand_1k/full1000/figures/01_three_seed_comparison.png
+!/reports/kuairand_1k/full1000/figures/02_learning_curves.png
+!/reports/kuairand_1k/full1000/figures/03_scenario_differences.png

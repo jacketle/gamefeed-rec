@@ -1,0 +1,21 @@
+seed: 2026
+paths:
+  raw_dir: data/raw/kuairand_1k/KuaiRand-1K/data
+  processed_dir: data/processed/kuairand_1k/pilot100
+  artifact_dir: artifacts/kuairand_1k/pilot100
+  report_dir: reports/kuairand_1k/pilot100
+data:
+  sample_users: 100
+  chunksize: 200000
+  history_length: 20
+  train_start: 20220422
+  train_end: 20220501
+  dev_end: 20220505
+  test_end: 20220508
+model:
+  device: cuda
+  batch_size: 256
+  epochs: 5
+  learning_rate: 0.001
+  patience: 2
+  threads: 4

@@ -33,16 +33,16 @@ try:
     call('Page.enable');call('Network.enable')
     call('Network.emulateNetworkConditions',dict(offline=True,latency=0,downloadThroughput=0,uploadThroughput=0))
     call('Emulation.setDeviceMetricsOverride',dict(width=1440,height=1100,deviceScaleFactor=1,mobile=False))
-    call('Page.navigate',dict(url=(ROOT/'deliverables/GameFeed_实验结果与面试图解.html').as_uri()))
+    call('Page.navigate',dict(url=(ROOT/'deliverables/GameFeed_实验结果图解.html').as_uri()))
     for _ in range(100):
-        if js("document.querySelector('#qa-count')?.textContent.includes('22 / 22')"):break
+        if js("document.querySelector('#history-followup') !== null"):break
         time.sleep(.1)
     else:raise AssertionError('Report did not load')
     js("document.querySelectorAll('img').forEach(img=>img.loading='eager')")
     js("Promise.all(Array.from(document.images).filter(x=>x.src).map(x=>x.decode()))")
-    assert js("document.querySelectorAll('.qa').length")==22
+    assert js("document.querySelectorAll('.qa').length")==0
     assert js("document.querySelectorAll('.formula-card').length")==9
-    assert js("document.querySelectorAll('figure').length")==12
+    assert js("document.querySelectorAll('figure').length")==16
     assert js("!/长看|用户日/.test(document.body.innerText)")
     assert js("document.body.innerText.includes('视频长度不超过18秒')")
     assert js("document.body.innerText.includes('BGE＋历史均值')")
@@ -55,9 +55,10 @@ try:
     assert js("document.querySelector('#methods').textContent.includes('不包含重新训练的波动')")
     assert js("document.querySelector('#final-evaluation').innerText.includes('4.448%')")
     assert js("document.querySelector('#final-evaluation').innerText.includes('3.858%')")
-    assert js("Array.from(document.querySelectorAll('.qa')).find(x=>x.querySelector('summary').innerText.includes('Q08')).textContent.includes('实验排序模式使用')")
     assert js("Array.from(document.querySelectorAll('script[src],link[rel=stylesheet]')).length")==0
     assert js("Array.from(document.images).filter(x=>x.src).every(x=>x.src.startsWith('data:') && x.naturalWidth>0)")
+    assert js("document.querySelector('#history-1k').innerText.includes('0.69076')")
+    assert js("document.querySelector('#history-followup').innerText.includes('0.68755')")
     capture('report-desktop.png')
     assert js("parseFloat(getComputedStyle(document.querySelector('figcaption')).fontSize)")>=14
     assert js("parseFloat(getComputedStyle(document.querySelector('table')).fontSize)")>=14
@@ -88,12 +89,6 @@ try:
         assert js("document.querySelector('#toy-table tbody tr td').textContent")==winner
     js("document.querySelector('#alpha').value='1'; document.querySelector('#alpha').dispatchEvent(new Event('input')); document.querySelector('#cap').click()")
     assert js("Array.from(document.querySelectorAll('#toy-table tbody tr:not(.toy-dropped)')).map(r=>r.cells[0].textContent).join('')")=='ABDE'
-    js("document.querySelector('#qa-search').value='双塔'; document.querySelector('#qa-search').dispatchEvent(new Event('input'))")
-    count=js("document.querySelectorAll('.qa:not([hidden])').length")
-    assert 0<count<22
-    js("document.querySelector('#expand').click()")
-    assert js("Array.from(document.querySelectorAll('.qa:not([hidden])')).every(x=>x.open)")
-    js("document.querySelector('#qa-search').value=''; document.querySelector('#qa-search').dispatchEvent(new Event('input'))")
     js("document.querySelector('#retrieval img').click()")
     assert js("document.querySelector('#image-dialog').open")
     js("document.querySelector('#close-image').click()")
@@ -101,8 +96,6 @@ try:
     capture('report-flow.png')
     js("document.querySelector('#formulas').scrollIntoView({behavior:'instant'})")
     capture('report-formulas.png')
-    js("document.querySelector('#questions').scrollIntoView({behavior:'instant'})")
-    capture('report-questions.png')
     js("document.querySelector('#ranking').scrollIntoView({behavior:'instant'})")
     capture('report-ranking-coverage.png')
     js("Array.from(document.querySelectorAll('h3')).find(x=>x.textContent==='开发集：不同方案的前10条对照').scrollIntoView({behavior:'instant'})")
@@ -117,8 +110,8 @@ try:
     # Embedded exports can be moved together with this one HTML file.
     assert js("document.querySelector('a[download$=\".pdf\"]').href.startsWith('data:application/pdf;base64,')")
     assert js("document.querySelector('a[download$=\".json\"]').href.startsWith('data:application/json;base64,')")
-    result={'offline_file_open':True,'figures':8,'architecture_figures':4,'architecture_tabs_links_zoom':True,'formulas':9,'questions':22,'widths':[1440,390],
-            'flow_and_autoplay':True,'weight_slider_and_author_cap':True,'qa_search_and_expand':True,
+    result={'offline_file_open':True,'figures':8,'architecture_figures':4,'architecture_tabs_links_zoom':True,'formulas':9,'questions':0,'widths':[1440,390],
+            'flow_and_autoplay':True,'weight_slider_and_author_cap':True,'history_followup':True,
             'image_zoom':True,'embedded_downloads':True,'external_assets':0,
             'plain_chinese_labels':True,'watching_threshold_defined':True,
             'strong_baseline_and_metric_denominators':True}

@@ -1,0 +1,309 @@
+{
+  "features": {
+    "vocabulary_items": 3422146,
+    "tags": 58,
+    "max_tags": 5,
+    "numeric_mean": [
+      3.376887798309326,
+      3.0042037963867188
+    ],
+    "numeric_std": [
+      1.5074881315231323,
+      0.05004357174038887
+    ],
+    "history_length": 20
+  },
+  "feature_rules": "Untrained user/scene IDs map to zero; untrained item IDs use zero embedding and retain known tags",
+  "training_tabs": {
+    "1": 2520859,
+    "0": 774524,
+    "4": 271638,
+    "2": 129467,
+    "6": 37196,
+    "3": 10462,
+    "8": 5851,
+    "12": 4941,
+    "11": 4569,
+    "5": 2944,
+    "7": 1097,
+    "9": 411,
+    "14": 347,
+    "10": 210,
+    "13": 14
+  },
+  "hardware": {
+    "torch": "2.7.0+cu128",
+    "device": "CUDA GPU",
+    "batch_size": 256
+  },
+  "S0": {
+    "smoothing": 20,
+    "dev": {
+      "auc": 0.7760095466760718,
+      "log_loss": 0.4735042719646583,
+      "gauc": 0.6142849348566105,
+      "rows": 1642223,
+      "positive_rate": 0.2591645592590044,
+      "valid_users": 979,
+      "total_users": 986,
+      "covered_rows": 1641623,
+      "user_coverage": 0.9929006085192698,
+      "exposure_coverage": 0.9996346415803457
+    },
+    "note": "Fixed initial smoothing, not tuned. Constant within user and scenario; no item discrimination."
+  },
+  "training": {
+    "B1_seed2026": {
+      "mode": "B1",
+      "seed": 2026,
+      "history_id_dropout": 0.5,
+      "epochs": [
+        {
+          "epoch": 1,
+          "train_loss": 0.45967433512370287,
+          "train_seconds": 510.81377980008256,
+          "dev": {
+            "auc": 0.7898540470127451,
+            "log_loss": 0.4684924781322479,
+            "gauc": 0.6860365301607538,
+            "rows": 1642223,
+            "positive_rate": 0.2591645592590044,
+            "valid_users": 979,
+            "total_users": 986,
+            "covered_rows": 1641623,
+            "user_coverage": 0.9929006085192698,
+            "exposure_coverage": 0.9996346415803457
+          }
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.42972727754569695,
+          "train_seconds": 501.49351329996716,
+          "dev": {
+            "auc": 0.7829992027990176,
+            "log_loss": 0.4781368672847748,
+            "gauc": 0.6823881812729836,
+            "rows": 1642223,
+            "positive_rate": 0.2591645592590044,
+            "valid_users": 979,
+            "total_users": 986,
+            "covered_rows": 1641623,
+            "user_coverage": 0.9929006085192698,
+            "exposure_coverage": 0.9996346415803457
+          }
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.40911968660442394,
+          "train_seconds": 470.809049100033,
+          "dev": {
+            "auc": 0.7788578109492518,
+            "log_loss": 0.48812007904052734,
+            "gauc": 0.6795187558863014,
+            "rows": 1642223,
+            "positive_rate": 0.2591645592590044,
+            "valid_users": 979,
+            "total_users": 986,
+            "covered_rows": 1641623,
+            "user_coverage": 0.9929006085192698,
+            "exposure_coverage": 0.9996346415803457
+          }
+        }
+      ],
+      "best_dev": {
+        "auc": 0.7898540470127451,
+        "log_loss": 0.4684924781322479,
+        "gauc": 0.6860365301607538,
+        "rows": 1642223,
+        "positive_rate": 0.2591645592590044,
+        "valid_users": 979,
+        "total_users": 986,
+        "covered_rows": 1641623,
+        "user_coverage": 0.9929006085192698,
+        "exposure_coverage": 0.9996346415803457
+      },
+      "parameters": 54780513,
+      "peak_gpu_mib": 1112.39208984375,
+      "status": "development_comparison",
+      "dev_coverage": {
+        "candidate_vocabulary": 0.3407375246845282,
+        "candidate_trained": 0.30159545932556053,
+        "history_vocabulary": 0.3791187468073014,
+        "history_trained": 0.3427635216220491,
+        "tag_available": 0.9696033973461582
+      },
+      "dev_tabs": {
+        "0": {
+          "auc": 0.6867112800342304,
+          "log_loss": 0.1575949490070343,
+          "gauc": 0.5595862260518057,
+          "rows": 334552,
+          "positive_rate": 0.03790442143523279,
+          "valid_users": 578,
+          "total_users": 785,
+          "covered_rows": 330356,
+          "user_coverage": 0.7363057324840764,
+          "exposure_coverage": 0.9874578540854635
+        },
+        "1": {
+          "auc": 0.7322098754968382,
+          "log_loss": 0.550678014755249,
+          "gauc": 0.6099784095778307,
+          "rows": 1107434,
+          "positive_rate": 0.31039592427178503,
+          "valid_users": 966,
+          "total_users": 976,
+          "covered_rows": 1107359,
+          "user_coverage": 0.9897540983606558,
+          "exposure_coverage": 0.9999322758737766
+        },
+        "2": {
+          "auc": 0.7795028300974757,
+          "log_loss": 0.5062599778175354,
+          "gauc": 0.6123681986641478,
+          "rows": 48577,
+          "positive_rate": 0.30565905675525457,
+          "valid_users": 77,
+          "total_users": 101,
+          "covered_rows": 48509,
+          "user_coverage": 0.7623762376237624,
+          "exposure_coverage": 0.998600160569817
+        },
+        "3": {
+          "auc": 0.67821484873508,
+          "log_loss": 0.015127620659768581,
+          "gauc": 0.32022191329420246,
+          "rows": 3813,
+          "positive_rate": 0.0018358248098610018,
+          "valid_users": 6,
+          "total_users": 363,
+          "covered_rows": 249,
+          "user_coverage": 0.01652892561983471,
+          "exposure_coverage": 0.06530291109362707
+        },
+        "4": {
+          "auc": 0.7225079169669313,
+          "log_loss": 0.6060649156570435,
+          "gauc": 0.588518356457031,
+          "rows": 125879,
+          "positive_rate": 0.41619332851389035,
+          "valid_users": 499,
+          "total_users": 570,
+          "covered_rows": 125507,
+          "user_coverage": 0.875438596491228,
+          "exposure_coverage": 0.9970447810993096
+        },
+        "5": {
+          "auc": 0.6374994953776594,
+          "log_loss": 0.3455718755722046,
+          "gauc": 0.5330731623036443,
+          "rows": 1215,
+          "positive_rate": 0.11358024691358025,
+          "valid_users": 29,
+          "total_users": 51,
+          "covered_rows": 1061,
+          "user_coverage": 0.5686274509803921,
+          "exposure_coverage": 0.8732510288065843
+        },
+        "6": {
+          "auc": 0.7148579608397031,
+          "log_loss": 0.2525988519191742,
+          "gauc": 0.5468937534137726,
+          "rows": 14363,
+          "positive_rate": 0.07575019146417879,
+          "valid_users": 351,
+          "total_users": 724,
+          "covered_rows": 10257,
+          "user_coverage": 0.48480662983425415,
+          "exposure_coverage": 0.7141265752280165
+        },
+        "7": {
+          "auc": 0.6806960591876794,
+          "log_loss": 0.706245481967926,
+          "gauc": 0.4952482420538342,
+          "rows": 617,
+          "positive_rate": 0.419773095623987,
+          "valid_users": 6,
+          "total_users": 19,
+          "covered_rows": 486,
+          "user_coverage": 0.3157894736842105,
+          "exposure_coverage": 0.7876823338735819
+        },
+        "8": {
+          "auc": 0.5670680550757539,
+          "log_loss": 0.12321583926677704,
+          "gauc": 0.5243777246653057,
+          "rows": 1808,
+          "positive_rate": 0.025442477876106196,
+          "valid_users": 12,
+          "total_users": 50,
+          "covered_rows": 725,
+          "user_coverage": 0.24,
+          "exposure_coverage": 0.40099557522123896
+        },
+        "9": {
+          "auc": 0.5617598684210526,
+          "log_loss": 0.6632193326950073,
+          "gauc": 0.5803358192195401,
+          "rows": 232,
+          "positive_rate": 0.3448275862068966,
+          "valid_users": 9,
+          "total_users": 18,
+          "covered_rows": 215,
+          "user_coverage": 0.5,
+          "exposure_coverage": 0.9267241379310345
+        },
+        "10": {
+          "auc": 0.6244212962962963,
+          "log_loss": 0.7406023144721985,
+          "gauc": 0.6106114050558495,
+          "rows": 86,
+          "positive_rate": 0.627906976744186,
+          "valid_users": 8,
+          "total_users": 13,
+          "covered_rows": 81,
+          "user_coverage": 0.6153846153846154,
+          "exposure_coverage": 0.9418604651162791
+        },
+        "11": {
+          "auc": 0.5238542155482558,
+          "log_loss": 0.15832044184207916,
+          "gauc": 0.5933972796394607,
+          "rows": 2206,
+          "positive_rate": 0.03399818676337262,
+          "valid_users": 4,
+          "total_users": 9,
+          "covered_rows": 1278,
+          "user_coverage": 0.4444444444444444,
+          "exposure_coverage": 0.5793291024478694
+        },
+        "12": {
+          "auc": 0.46685254347758615,
+          "log_loss": 0.3898220360279083,
+          "gauc": 0.4875951068016083,
+          "rows": 1349,
+          "positive_rate": 0.12083024462564863,
+          "valid_users": 10,
+          "total_users": 18,
+          "covered_rows": 1286,
+          "user_coverage": 0.5555555555555556,
+          "exposure_coverage": 0.9532987398072647
+        },
+        "14": {
+          "auc": 0.6604969574036512,
+          "log_loss": 0.7131035923957825,
+          "gauc": 0.6761459671698101,
+          "rows": 92,
+          "positive_rate": 0.3695652173913043,
+          "valid_users": 2,
+          "total_users": 3,
+          "covered_rows": 91,
+          "user_coverage": 0.6666666666666666,
+          "exposure_coverage": 0.9891304347826086
+        }
+      },
+      "peak_process_mib": 3473.21484375
+    }
+  },
+  "elapsed_seconds": 1557.1372227999382
+}

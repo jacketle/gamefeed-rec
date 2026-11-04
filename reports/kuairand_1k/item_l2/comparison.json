@@ -1,0 +1,304 @@
+{
+  "screening": {
+    "0.001": {
+      "strength": 0.001,
+      "metrics": {
+        "auc": 0.7875720633064388,
+        "log_loss": 0.4828459620475769,
+        "gauc": 0.6871982836686221,
+        "rows": 1642223,
+        "positive_rate": 0.2591645592590044,
+        "valid_users": 979,
+        "total_users": 986,
+        "covered_rows": 1641623,
+        "user_coverage": 0.9929006085192698,
+        "exposure_coverage": 0.9996346415803457
+      },
+      "difference": {
+        "mean_difference": -9.707252604483547e-05,
+        "ci95": [
+          -0.0006090470203671337,
+          0.00042872133068440425
+        ],
+        "valid_bootstrap": 2000,
+        "users": 986,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      },
+      "groups": {
+        "全部": {
+          "rows": 1642223,
+          "original_B1": {
+            "auc": 0.787472776128668,
+            "log_loss": 0.48154446482658386,
+            "gauc": 0.6872953561946671,
+            "rows": 1642223,
+            "positive_rate": 0.2591645592590044,
+            "valid_users": 979,
+            "total_users": 986,
+            "covered_rows": 1641623,
+            "user_coverage": 0.9929006085192698,
+            "exposure_coverage": 0.9996346415803457
+          },
+          "regularized_B1": {
+            "auc": 0.7875720633064388,
+            "log_loss": 0.4828459620475769,
+            "gauc": 0.6871982836686221,
+            "rows": 1642223,
+            "positive_rate": 0.2591645592590044,
+            "valid_users": 979,
+            "total_users": 986,
+            "covered_rows": 1641623,
+            "user_coverage": 0.9929006085192698,
+            "exposure_coverage": 0.9996346415803457
+          }
+        },
+        "历史ID覆盖0–25%": {
+          "rows": 747664,
+          "original_B1": {
+            "auc": 0.7809970910922249,
+            "log_loss": 0.463809996843338,
+            "gauc": 0.6769178633277431,
+            "rows": 747664,
+            "positive_rate": 0.22624467675319396,
+            "valid_users": 876,
+            "total_users": 880,
+            "covered_rows": 747655,
+            "user_coverage": 0.9954545454545455,
+            "exposure_coverage": 0.9999879625072225
+          },
+          "regularized_B1": {
+            "auc": 0.7811202512599431,
+            "log_loss": 0.465553879737854,
+            "gauc": 0.6765990867948104,
+            "rows": 747664,
+            "positive_rate": 0.22624467675319396,
+            "valid_users": 876,
+            "total_users": 880,
+            "covered_rows": 747655,
+            "user_coverage": 0.9954545454545455,
+            "exposure_coverage": 0.9999879625072225
+          }
+        },
+        "历史ID覆盖25–75%": {
+          "rows": 805978,
+          "original_B1": {
+            "auc": 0.7868608592719895,
+            "log_loss": 0.49793142080307007,
+            "gauc": 0.6952191261508001,
+            "rows": 805978,
+            "positive_rate": 0.2859978808354571,
+            "valid_users": 971,
+            "total_users": 972,
+            "covered_rows": 805974,
+            "user_coverage": 0.9989711934156379,
+            "exposure_coverage": 0.9999950370853795
+          },
+          "regularized_B1": {
+            "auc": 0.7870393495862418,
+            "log_loss": 0.4988831877708435,
+            "gauc": 0.6951384223935577,
+            "rows": 805978,
+            "positive_rate": 0.2859978808354571,
+            "valid_users": 971,
+            "total_users": 972,
+            "covered_rows": 805974,
+            "user_coverage": 0.9989711934156379,
+            "exposure_coverage": 0.9999950370853795
+          }
+        },
+        "历史ID覆盖75–100%": {
+          "rows": 88581,
+          "original_B1": {
+            "auc": 0.7988856245851669,
+            "log_loss": 0.48213014006614685,
+            "gauc": 0.6905254056611854,
+            "rows": 88581,
+            "positive_rate": 0.29287318951016583,
+            "valid_users": 969,
+            "total_users": 983,
+            "covered_rows": 87924,
+            "user_coverage": 0.9857578840284842,
+            "exposure_coverage": 0.9925830595725946
+          },
+          "regularized_B1": {
+            "auc": 0.7986418084617536,
+            "log_loss": 0.48287999629974365,
+            "gauc": 0.6903215438165845,
+            "rows": 88581,
+            "positive_rate": 0.29287318951016583,
+            "valid_users": 969,
+            "total_users": 983,
+            "covered_rows": 87924,
+            "user_coverage": 0.9857578840284842,
+            "exposure_coverage": 0.9925830595725946
+          }
+        }
+      }
+    },
+    "0.01": {
+      "strength": 0.01,
+      "metrics": {
+        "auc": 0.7871663463183608,
+        "log_loss": 0.48093703389167786,
+        "gauc": 0.6875541343678087,
+        "rows": 1642223,
+        "positive_rate": 0.2591645592590044,
+        "valid_users": 979,
+        "total_users": 986,
+        "covered_rows": 1641623,
+        "user_coverage": 0.9929006085192698,
+        "exposure_coverage": 0.9996346415803457
+      },
+      "difference": {
+        "mean_difference": 0.0002587781731416057,
+        "ci95": [
+          -0.0002458258781694202,
+          0.0008022824697502695
+        ],
+        "valid_bootstrap": 2000,
+        "users": 986,
+        "repeats": 2000,
+        "interpretation": "User sampling uncertainty of the mean difference over three fixed paired training seeds"
+      },
+      "groups": {
+        "全部": {
+          "rows": 1642223,
+          "original_B1": {
+            "auc": 0.787472776128668,
+            "log_loss": 0.48154446482658386,
+            "gauc": 0.6872953561946671,
+            "rows": 1642223,
+            "positive_rate": 0.2591645592590044,
+            "valid_users": 979,
+            "total_users": 986,
+            "covered_rows": 1641623,
+            "user_coverage": 0.9929006085192698,
+            "exposure_coverage": 0.9996346415803457
+          },
+          "regularized_B1": {
+            "auc": 0.7871663463183608,
+            "log_loss": 0.48093703389167786,
+            "gauc": 0.6875541343678087,
+            "rows": 1642223,
+            "positive_rate": 0.2591645592590044,
+            "valid_users": 979,
+            "total_users": 986,
+            "covered_rows": 1641623,
+            "user_coverage": 0.9929006085192698,
+            "exposure_coverage": 0.9996346415803457
+          }
+        },
+        "历史ID覆盖0–25%": {
+          "rows": 747664,
+          "original_B1": {
+            "auc": 0.7809970910922249,
+            "log_loss": 0.463809996843338,
+            "gauc": 0.6769178633277431,
+            "rows": 747664,
+            "positive_rate": 0.22624467675319396,
+            "valid_users": 876,
+            "total_users": 880,
+            "covered_rows": 747655,
+            "user_coverage": 0.9954545454545455,
+            "exposure_coverage": 0.9999879625072225
+          },
+          "regularized_B1": {
+            "auc": 0.781014846569611,
+            "log_loss": 0.46294283866882324,
+            "gauc": 0.6773942192734438,
+            "rows": 747664,
+            "positive_rate": 0.22624467675319396,
+            "valid_users": 876,
+            "total_users": 880,
+            "covered_rows": 747655,
+            "user_coverage": 0.9954545454545455,
+            "exposure_coverage": 0.9999879625072225
+          }
+        },
+        "历史ID覆盖25–75%": {
+          "rows": 805978,
+          "original_B1": {
+            "auc": 0.7868608592719895,
+            "log_loss": 0.49793142080307007,
+            "gauc": 0.6952191261508001,
+            "rows": 805978,
+            "positive_rate": 0.2859978808354571,
+            "valid_users": 971,
+            "total_users": 972,
+            "covered_rows": 805974,
+            "user_coverage": 0.9989711934156379,
+            "exposure_coverage": 0.9999950370853795
+          },
+          "regularized_B1": {
+            "auc": 0.7862805997174827,
+            "log_loss": 0.4974973797798157,
+            "gauc": 0.6949234005402128,
+            "rows": 805978,
+            "positive_rate": 0.2859978808354571,
+            "valid_users": 971,
+            "total_users": 972,
+            "covered_rows": 805974,
+            "user_coverage": 0.9989711934156379,
+            "exposure_coverage": 0.9999950370853795
+          }
+        },
+        "历史ID覆盖75–100%": {
+          "rows": 88581,
+          "original_B1": {
+            "auc": 0.7988856245851669,
+            "log_loss": 0.48213014006614685,
+            "gauc": 0.6905254056611854,
+            "rows": 88581,
+            "positive_rate": 0.29287318951016583,
+            "valid_users": 969,
+            "total_users": 983,
+            "covered_rows": 87924,
+            "user_coverage": 0.9857578840284842,
+            "exposure_coverage": 0.9925830595725946
+          },
+          "regularized_B1": {
+            "auc": 0.7987460057925746,
+            "log_loss": 0.4821380376815796,
+            "gauc": 0.6914363664702303,
+            "rows": 88581,
+            "positive_rate": 0.29287318951016583,
+            "valid_users": 969,
+            "total_users": 983,
+            "covered_rows": 87924,
+            "user_coverage": 0.9857578840284842,
+            "exposure_coverage": 0.9925830595725946
+          }
+        }
+      }
+    }
+  },
+  "baseline": {
+    "B0": {
+      "auc": 0.7942739629957323,
+      "log_loss": 0.46370652318000793,
+      "gauc": 0.6946067916295915,
+      "rows": 1642223,
+      "positive_rate": 0.2591645592590044,
+      "valid_users": 979,
+      "total_users": 986,
+      "covered_rows": 1641623,
+      "user_coverage": 0.9929006085192698,
+      "exposure_coverage": 0.9996346415803457
+    },
+    "B1": {
+      "auc": 0.787472776128668,
+      "log_loss": 0.48154446482658386,
+      "gauc": 0.6872953561946671,
+      "rows": 1642223,
+      "positive_rate": 0.2591645592590044,
+      "valid_users": 979,
+      "total_users": 986,
+      "covered_rows": 1641623,
+      "user_coverage": 0.9929006085192698,
+      "exposure_coverage": 0.9996346415803457
+    }
+  },
+  "selected_strength": 0.01,
+  "worth_repeating": false
+}

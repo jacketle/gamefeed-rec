@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "gamefeed-rec"
 version = "0.1.0"
-description = "A reproducible two-stage content recommendation project built on KuaiRand-Pure."
+description = "A reproducible two-stage content recommendation project built on KuaiRand-Pure and KuaiRand-1K."
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
@@ -15,6 +15,7 @@ dependencies = [
   "PyYAML>=6",
   "scikit-learn>=1.3",
   "torch>=2.0",
+  "psutil>=5.9",
 ]
 
 [project.scripts]
