@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "gamefeed-rec"
 version = "0.1.0"
-description = "A reproducible two-stage content recommendation project built on KuaiRand-Pure and KuaiRand-1K."
+description = "Reproducible KuaiRand recommendation experiments: retrieval, ranking, and history matching."
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
@@ -24,6 +24,7 @@ gamefeed = "gamefeed.cli:main"
 [project.optional-dependencies]
 semantic = ["sentence-transformers>=3,<6"]
 report = ["matplotlib>=3.7"]
+browser = ["websocket-client>=1.6"]
 
 [tool.setuptools]
 package-dir = {"" = "src"}

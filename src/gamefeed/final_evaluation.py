@@ -25,6 +25,19 @@ def observed_ndcg(ids, positives, k=10):
     return float(dcg / discounts[:min(k, len(positives))].sum())
 
 
+def blend_rank_order(ids, watch_probabilities):
+    """Fixed 75/25 reciprocal-rank blend, preserving candidate membership."""
+    ids = list(ids)
+    probabilities = np.asarray(watch_probabilities)
+    if probabilities.shape != (len(ids),) or not np.isfinite(probabilities).all() or len(set(ids)) != len(ids):
+        raise ValueError('Expected unique candidates and one finite probability per candidate')
+    watch_order = sorted(range(len(ids)), key=lambda i: (-probabilities[i], str(ids[i])))
+    watch_rank = np.empty(len(ids))
+    watch_rank[watch_order] = np.arange(1, len(ids)+1)
+    scores = .75/(60+np.arange(1,len(ids)+1)) + .25/(60+watch_rank)
+    return [ids[i] for i in sorted(range(len(ids)), key=lambda i: (-scores[i], str(ids[i])))]
+
+
 def paired_user_interval(frame, column='delta', repeats=2000, seed=2026):
     """Resample whole users; preserve the original equal-weight query mean."""
     grouped = frame.groupby('user_id')[column].agg(['sum', 'count'])

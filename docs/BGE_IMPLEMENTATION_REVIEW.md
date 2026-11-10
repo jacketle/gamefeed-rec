@@ -92,4 +92,4 @@
 
 ## 收尾检查与当前安排
 
-逐日随机基线已单独复核：开发、测试每天均有7583条可用内容，不可用正例为0，Recall@100期望为1.3187%。详情见 `reports/release/interpretation_checks/report.md`。文本召回改进方向保留为后续研究；1K历史建模结果见主README。
+逐日随机基线已单独复核：开发、测试每天均有7583条可用内容，不可用正例为0，Recall@100期望为1.3187%。详情见 `reports/release/interpretation_checks/report.md`。本轮不开展新的文本或1K实验，以上改进方向保留为后续研究。

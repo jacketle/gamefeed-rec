@@ -1,0 +1,114 @@
+{
+  "feature_order": [
+    "same_author_fraction",
+    "same_author_any",
+    "shared_tag_history_fraction"
+  ],
+  "batch_size": 8192,
+  "device": "cpu",
+  "threads": 2,
+  "note": "Unadjusted feature-label associations; model comparisons determine ranking gains.",
+  "history_rule": {
+    "names": [
+      "same_author_fraction",
+      "same_author_any",
+      "shared_tag_history_fraction"
+    ],
+    "denominator": "valid prior history positions; empty history yields zero",
+    "author_rule": "raw author IDs >= 0, independent of embedding frequency threshold",
+    "tag_rule": "any shared known tag (>1) marks one matching history position"
+  },
+  "train": {
+    "rows": 3764530,
+    "long_view_rate": 0.26515023123736564,
+    "zero_history_rows": 289,
+    "zero_history_matches_all_zero": true,
+    "features": {
+      "same_author_fraction": {
+        "nonzero_rows": 38632,
+        "nonzero_coverage": 0.010262104432691465,
+        "mean": 0.0005633773457884441,
+        "long_view_rate_nonzero": 0.33461896873058605,
+        "long_view_rate_zero": 0.26442994413695703
+      },
+      "same_author_any": {
+        "nonzero_rows": 38632,
+        "nonzero_coverage": 0.010262104432691465,
+        "mean": 0.010262104432691465,
+        "long_view_rate_nonzero": 0.33461896873058605,
+        "long_view_rate_zero": 0.26442994413695703
+      },
+      "shared_tag_history_fraction": {
+        "nonzero_rows": 2557622,
+        "nonzero_coverage": 0.6794000844726965,
+        "mean": 0.12252969923145542,
+        "long_view_rate_nonzero": 0.28465895273030967,
+        "long_view_rate_zero": 0.22380827701862943
+      }
+    },
+    "correlation": [
+      [
+        1.0,
+        0.905560174764544,
+        0.0631200022754343
+      ],
+      [
+        0.905560174764544,
+        1.0,
+        0.06350641598012002
+      ],
+      [
+        0.0631200022754343,
+        0.06350641598012002,
+        0.9999999999999999
+      ]
+    ]
+  },
+  "dev": {
+    "rows": 1642223,
+    "long_view_rate": 0.2591645592590044,
+    "zero_history_rows": 121,
+    "zero_history_matches_all_zero": true,
+    "features": {
+      "same_author_fraction": {
+        "nonzero_rows": 16610,
+        "nonzero_coverage": 0.010114338917430825,
+        "mean": 0.0005636632278112014,
+        "long_view_rate_nonzero": 0.33600240818783866,
+        "long_view_rate_zero": 0.2583794543965876
+      },
+      "same_author_any": {
+        "nonzero_rows": 16610,
+        "nonzero_coverage": 0.010114338917430825,
+        "mean": 0.010114338917430825,
+        "long_view_rate_nonzero": 0.33600240818783866,
+        "long_view_rate_zero": 0.2583794543965876
+      },
+      "shared_tag_history_fraction": {
+        "nonzero_rows": 1104671,
+        "nonzero_coverage": 0.6726680846632888,
+        "mean": 0.12093684620821442,
+        "long_view_rate_nonzero": 0.27840958982357644,
+        "long_view_rate_zero": 0.219615962734768
+      }
+    },
+    "correlation": [
+      [
+        1.0,
+        0.9191139535412679,
+        0.06015126211336306
+      ],
+      [
+        0.9191139535412679,
+        1.0000000000000002,
+        0.059359016236096955
+      ],
+      [
+        0.06015126211336306,
+        0.059359016236096955,
+        1.0000000000000002
+      ]
+    ]
+  },
+  "elapsed_seconds": 25.903906500025187
+}

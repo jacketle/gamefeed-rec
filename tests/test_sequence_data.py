@@ -41,13 +41,20 @@ class SequenceHistoryTests(unittest.TestCase):
             rows['source']=LOGS[0][0];rows['source_row']=range(3)
             rows['history_start']=0;rows['history_end']=0;rows['history_len']=0
             for date,g in rows.groupby('date'):g.to_parquet(root/f'events_{date}.parquet',index=False)
-            pd.DataFrame(dict(video_id=[11,12],video_duration=[2000,2000],tag=['1','2'])).to_parquet(root/'items.parquet',index=False)
+            pd.DataFrame(dict(video_id=[11,12],video_duration=[2000,2000],tag=['1','2'],author_id=[101,102])).to_parquet(root/'items.parquet',index=False)
             import numpy as np
             np.save(root/'history_pool.npy',np.array([],dtype='int32'))
             cfg=dict(resolved_paths=Paths(root,root,root,root,root),data=dict(history_length=20,dev_end=20220505,train_end=20220501))
             x=Inputs(cfg)
             self.assertEqual(x.users[x.dev].tolist(),[0])
             self.assertGreater(x.users[x.train][0],0)
+            x.pool._mmap.close()
+            self.assertFalse((root/'sequence_feature_maps.npz').exists())
+            cfg['model'] = {'use_author':True}
+            x = Inputs(cfg)
+            self.assertEqual(x.feature_maps['authors'].tolist(),[102])
+            self.assertEqual(x.authors[x.dev].tolist(),[0])
+            self.assertEqual(x.authors[x.train].tolist(),[1])
             x.pool._mmap.close()
     def test_strict_time_random_exclusion_and_user_boundaries(self):
         e = pd.DataFrame([

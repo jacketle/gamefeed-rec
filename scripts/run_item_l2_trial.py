@@ -87,9 +87,9 @@ def main():
         completed=cfg['resolved_paths'].report_dir/'experiment_results.json'
         previous=json.loads(completed.read_text(encoding='utf-8')) if completed.exists() else {}
         record=previous.get('training',{}).get(f'{mode}_seed{seed}',{})
-        model_dir=cfg['resolved_paths'].artifact_dir/f'{mode}_seed{seed}'
         if (record.get('status')=='development_comparison' and record.get('item_l2')==strength
-                and all((model_dir/name).is_file() for name in ('best.pt','dev_predictions.parquet'))):
+                and (cfg['resolved_paths'].artifact_dir/f'{mode}_seed{seed}/best.pt').is_file()
+                and (cfg['resolved_paths'].artifact_dir/f'{mode}_seed{seed}/dev_predictions.parquet').is_file()):
             return cfg
         status('running',f'train_{mode}_seed{seed}_l2_{strength:g}')
         with log_path.open('a',encoding='utf-8',buffering=1) as log:

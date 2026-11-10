@@ -145,13 +145,13 @@ def run(folder):
         '5. 日期统一采用time_ms换算的上海日期，原date保留；历史严格早于当前时间。先前反馈视为已可用，潜在时间重叠数量见数据检查。',
         '6. 当前评价的是实际曝光上的观看达标预测，不等同于新召回列表或游戏业务的线上收益。游戏映射未完整验证，未给数字标签随意命名。',
         '7. 可选50／100条历史、全库召回与多任务不属于本轮必做；先保留可解释的主对照结果。',
-        '', '## 交付与复现','', '汇总JSON包含三个种子的完整曲线、各场景、已知／未见视频及视频时长分组。',
+        '', '## 交付与复现','', '样本检查见[data_check.md](data_check.md)，具体对比见[examples.md](examples.md)。JSON包含三个种子的完整曲线、各场景、已知／未见视频及视频时长分组。',
         '', '本图为定量比较图：三种子表现、训练过程和同场景差值分别回答三个问题。数据源为同目录experiment_results.json；没有删除任何种子。PNG供阅读，SVG/PDF保留可编辑文本。',
         '', '参考：[KuaiRand数据说明](https://kuairand.com/)、[DIN论文](https://arxiv.org/abs/1706.06978)。结果均来自本地实验。',
         '', '```powershell', '$env:PYTHONPATH = Join-Path $PWD src',
         f'python -m gamefeed.sequence_training --config configs/kuairand_1k{"_full" if n==1000 else ""}.yaml --seed 2026',
         '# 同样运行2027、2028后：', f'python -m gamefeed.sequence_evaluation --config configs/kuairand_1k{"_full" if n==1000 else ""}.yaml',
-        f'python scripts/report_sequence_experiment.py --report-dir {folder.relative_to(Path(__file__).resolve().parents[1]).as_posix() if folder.is_absolute() else folder.as_posix()}', '```']
+        f'python scripts/report_sequence_experiment.py --report-dir {folder.as_posix()}', '```']
     if n==1000 and (folder.parent/'item_l2/history_followup_case.md').exists():
         lines+=['','## 历史模型后续排查（2026-11-04）','',
                 '保持原三种子主实验结果，继续采用B0。后续种子2026对照中，屏蔽50%历史ID使开发GAUC下降0.126个百分点；视频ID正则0.01提高0.026个百分点，用户抽样95%区间为[−0.025，0.080]个百分点，未达到追加验证条件。',

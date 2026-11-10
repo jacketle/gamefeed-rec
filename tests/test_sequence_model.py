@@ -4,6 +4,21 @@ from gamefeed.sequence_model import SequenceRanker
 
 
 class SequenceModelTests(unittest.TestCase):
+    def test_author_zero_fallback_gradient_and_reload(self):
+        import io
+        model = SequenceRanker(2,8,8,2,'B0',num_authors=4)
+        batch = self.batch(); batch['author'] = torch.tensor([0,2])
+        model(batch).sum().backward()
+        self.assertEqual(model.author.weight.grad[0].abs().sum().item(),0)
+        self.assertGreater(model.author.weight.grad[2].abs().sum().item(),0)
+        model.eval(); expected = model(batch).detach()
+        with torch.no_grad(): model.author.weight[0].fill_(100)
+        self.assertTrue(torch.equal(model(batch).detach(),expected))
+        buffer = io.BytesIO(); torch.save(model.state_dict(),buffer); buffer.seek(0)
+        restored = SequenceRanker(2,8,8,2,'B0',num_authors=4).eval()
+        restored.load_state_dict(torch.load(buffer,weights_only=True))
+        self.assertTrue(torch.equal(restored(batch).detach(),expected))
+
     def test_item_l2_only_penalizes_distinct_used_ids(self):
         model=SequenceRanker(2,8,8,2,'B1')
         b=self.batch(); b['history'][0,0]=4

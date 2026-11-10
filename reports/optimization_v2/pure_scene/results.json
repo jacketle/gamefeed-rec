@@ -1,0 +1,659 @@
+{
+  "settings": {
+    "split": "dev",
+    "cpu_threads": 2,
+    "candidates": 100,
+    "k": 10,
+    "rrf_weight": 0.75,
+    "watch_rank_weight": 0.25,
+    "rank_constant": 60,
+    "bootstrap_repeats": 2000,
+    "bootstrap_seed": 2026
+  },
+  "exposure": {
+    "summary": {
+      "actual_scene": {
+        "gauc": 0.5751747946822805,
+        "ndcg10": 0.7967574773384155,
+        "valid_groups": 2166,
+        "covered_rows": 7324,
+        "users": 1448
+      },
+      "fixed_tab0": {
+        "gauc": 0.5585191789190554,
+        "ndcg10": 0.7906716709996544,
+        "valid_groups": 2166,
+        "covered_rows": 7324,
+        "users": 1448
+      }
+    },
+    "actual_minus_tab0": {
+      "gauc": {
+        "estimate": 0.01665561576322505,
+        "lower": 0.0029143943590574078,
+        "upper": 0.030179396027729188,
+        "positive_fraction": 0.9885,
+        "users": 1448,
+        "queries": 7324,
+        "repeats": 2000,
+        "seed": 2026
+      },
+      "ndcg10": {
+        "estimate": 0.006085806338761303,
+        "lower": -0.0007940473003806989,
+        "upper": 0.01310919466206034,
+        "positive_fraction": 0.958,
+        "users": 1448,
+        "queries": 2166,
+        "repeats": 2000,
+        "seed": 2026
+      }
+    },
+    "total_rows": 23461,
+    "total_groups": 13716,
+    "by_tab": {
+      "0": {
+        "actual_scene": {
+          "gauc": 0.4495960884353742,
+          "ndcg10": 0.7285707196256646,
+          "valid_groups": 40,
+          "covered_rows": 112,
+          "users": 38
+        },
+        "fixed_tab0": {
+          "gauc": 0.4495960884353742,
+          "ndcg10": 0.7285707196256646,
+          "valid_groups": 40,
+          "covered_rows": 112,
+          "users": 38
+        }
+      },
+      "1": {
+        "actual_scene": {
+          "gauc": 0.5794419986219431,
+          "ndcg10": 0.796972160574168,
+          "valid_groups": 1963,
+          "covered_rows": 6740,
+          "users": 1318
+        },
+        "fixed_tab0": {
+          "gauc": 0.5622493941572125,
+          "ndcg10": 0.7915014372011173,
+          "valid_groups": 1963,
+          "covered_rows": 6740,
+          "users": 1318
+        }
+      },
+      "2": {
+        "actual_scene": {
+          "gauc": 0.5403059723448073,
+          "ndcg10": 0.7948369553629951,
+          "valid_groups": 63,
+          "covered_rows": 206,
+          "users": 52
+        },
+        "fixed_tab0": {
+          "gauc": 0.5694763165636952,
+          "ndcg10": 0.7885629286643877,
+          "valid_groups": 63,
+          "covered_rows": 206,
+          "users": 52
+        }
+      },
+      "4": {
+        "actual_scene": {
+          "gauc": 0.5386075949367088,
+          "ndcg10": 0.8239249434486722,
+          "valid_groups": 91,
+          "covered_rows": 237,
+          "users": 80
+        },
+        "fixed_tab0": {
+          "gauc": 0.4931082981715893,
+          "ndcg10": 0.8005087820683062,
+          "valid_groups": 91,
+          "covered_rows": 237,
+          "users": 80
+        }
+      },
+      "6": {
+        "actual_scene": {
+          "gauc": 1.0,
+          "ndcg10": 1.0,
+          "valid_groups": 1,
+          "covered_rows": 8,
+          "users": 1
+        },
+        "fixed_tab0": {
+          "gauc": 1.0,
+          "ndcg10": 1.0,
+          "valid_groups": 1,
+          "covered_rows": 8,
+          "users": 1
+        }
+      },
+      "7": {
+        "actual_scene": {
+          "gauc": 0.5,
+          "ndcg10": 0.8154648767857287,
+          "valid_groups": 4,
+          "covered_rows": 8,
+          "users": 3
+        },
+        "fixed_tab0": {
+          "gauc": 0.5,
+          "ndcg10": 0.8154648767857287,
+          "valid_groups": 4,
+          "covered_rows": 8,
+          "users": 3
+        }
+      },
+      "8": {
+        "actual_scene": {
+          "gauc": 0.33333333333333337,
+          "ndcg10": 0.5,
+          "valid_groups": 1,
+          "covered_rows": 4,
+          "users": 1
+        },
+        "fixed_tab0": {
+          "gauc": 0.0,
+          "ndcg10": 0.4306765580733929,
+          "valid_groups": 1,
+          "covered_rows": 4,
+          "users": 1
+        }
+      },
+      "9": {
+        "actual_scene": {
+          "gauc": 0.0,
+          "ndcg10": 0.6309297535714573,
+          "valid_groups": 1,
+          "covered_rows": 2,
+          "users": 1
+        },
+        "fixed_tab0": {
+          "gauc": 0.0,
+          "ndcg10": 0.6309297535714573,
+          "valid_groups": 1,
+          "covered_rows": 2,
+          "users": 1
+        }
+      },
+      "12": {
+        "actual_scene": {
+          "gauc": 0.6428571428571429,
+          "ndcg10": 0.8664143102388955,
+          "valid_groups": 2,
+          "covered_rows": 7,
+          "users": 2
+        },
+        "fixed_tab0": {
+          "gauc": 0.6428571428571429,
+          "ndcg10": 0.9427299407857437,
+          "valid_groups": 2,
+          "covered_rows": 7,
+          "users": 2
+        }
+      }
+    },
+    "interpretation": "GAUC is weighted by exposures in user/date/tab groups with both labels. NDCG@10 averages these groups and averages tied score orderings. Repeated logged exposures remain separate observations.",
+    "group_size": {
+      "median": 3.0,
+      "maximum": 24,
+      "groups_at_least_10": 42
+    }
+  },
+  "candidates": {
+    "parent_queries": 5410,
+    "observed_scenes": 6353,
+    "positive_scenes": 5592,
+    "zero_positive_scenes": 761,
+    "summary": {
+      "blend": {
+        "queries": 5592,
+        "users": 2925,
+        "recall10": 0.0475915139541749,
+        "ndcg10": 0.023762354890346886,
+        "recall100": 0.2462945931830052,
+        "coverage": 0.491230383753132
+      },
+      "rrf": {
+        "queries": 5592,
+        "users": 2925,
+        "recall10": 0.04535191997638349,
+        "ndcg10": 0.023113119695901036,
+        "recall100": 0.2462945931830052,
+        "coverage": 0.5500461558749835
+      },
+      "watch": {
+        "queries": 5592,
+        "users": 2925,
+        "recall10": 0.03170175080046325,
+        "ndcg10": 0.016226511491207723,
+        "recall100": 0.2462945931830052,
+        "coverage": 0.24436238955558487
+      }
+    },
+    "comparisons": {
+      "watch_minus_rrf": {
+        "recall10": {
+          "estimate": -0.013650169175920247,
+          "lower": -0.019457854006759423,
+          "upper": -0.007922514473701795,
+          "positive_fraction": 0.0,
+          "users": 2925,
+          "queries": 5592,
+          "repeats": 2000,
+          "seed": 2026
+        },
+        "ndcg10": {
+          "estimate": -0.006886608204693313,
+          "lower": -0.010282613912350668,
+          "upper": -0.003757349403225303,
+          "positive_fraction": 0.0,
+          "users": 2925,
+          "queries": 5592,
+          "repeats": 2000,
+          "seed": 2026
+        }
+      },
+      "blend_minus_rrf": {
+        "recall10": {
+          "estimate": 0.002239593977791403,
+          "lower": -0.0006578440284633508,
+          "upper": 0.005020543886745641,
+          "positive_fraction": 0.933,
+          "users": 2925,
+          "queries": 5592,
+          "repeats": 2000,
+          "seed": 2026
+        },
+        "ndcg10": {
+          "estimate": 0.0006492351944458516,
+          "lower": -0.000981721712232889,
+          "upper": 0.0021748264050665956,
+          "positive_fraction": 0.7795,
+          "users": 2925,
+          "queries": 5592,
+          "repeats": 2000,
+          "seed": 2026
+        }
+      }
+    },
+    "by_tab": {
+      "0": {
+        "blend": {
+          "queries": 91,
+          "users": 86,
+          "recall10": 0.005494505494505495,
+          "ndcg10": 0.0024000817232765295,
+          "recall100": 0.04945054945054945,
+          "coverage": 0.036660952129763946
+        },
+        "rrf": {
+          "queries": 91,
+          "users": 86,
+          "recall10": 0.005494505494505495,
+          "ndcg10": 0.002901847500797702,
+          "recall100": 0.04945054945054945,
+          "coverage": 0.04101279177106686
+        },
+        "watch": {
+          "queries": 91,
+          "users": 86,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.04945054945054945,
+          "coverage": 0.03837531320058025
+        }
+      },
+      "1": {
+        "blend": {
+          "queries": 4644,
+          "users": 2609,
+          "recall10": 0.043091102361128196,
+          "ndcg10": 0.02064398924476528,
+          "recall100": 0.2484308136116922,
+          "coverage": 0.4636687326915469
+        },
+        "rrf": {
+          "queries": 4644,
+          "users": 2609,
+          "recall10": 0.04141715543524328,
+          "ndcg10": 0.020751655713048284,
+          "recall100": 0.2484308136116922,
+          "coverage": 0.5269682183832256
+        },
+        "watch": {
+          "queries": 4644,
+          "users": 2609,
+          "recall10": 0.028551433493293962,
+          "ndcg10": 0.01363825396620819,
+          "recall100": 0.2484308136116922,
+          "coverage": 0.22286693920611894
+        }
+      },
+      "2": {
+        "blend": {
+          "queries": 213,
+          "users": 144,
+          "recall10": 0.04194053208137715,
+          "ndcg10": 0.021550252177403854,
+          "recall100": 0.1855242566510172,
+          "coverage": 0.08057497032836608
+        },
+        "rrf": {
+          "queries": 213,
+          "users": 144,
+          "recall10": 0.03724569640062598,
+          "ndcg10": 0.02116831068438919,
+          "recall100": 0.1855242566510172,
+          "coverage": 0.09059738889621521
+        },
+        "watch": {
+          "queries": 213,
+          "users": 144,
+          "recall10": 0.009859154929577466,
+          "ndcg10": 0.010268488601301503,
+          "recall100": 0.1855242566510172,
+          "coverage": 0.054463932480548594
+        }
+      },
+      "3": {
+        "blend": {
+          "queries": 1,
+          "users": 1,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.0,
+          "coverage": 0.0013187392852433075
+        },
+        "rrf": {
+          "queries": 1,
+          "users": 1,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.0,
+          "coverage": 0.0013187392852433075
+        },
+        "watch": {
+          "queries": 1,
+          "users": 1,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.0,
+          "coverage": 0.0013187392852433075
+        }
+      },
+      "4": {
+        "blend": {
+          "queries": 565,
+          "users": 454,
+          "recall10": 0.09749262536873156,
+          "ndcg10": 0.05556321725157859,
+          "recall100": 0.290353982300885,
+          "coverage": 0.13108268495318476
+        },
+        "rrf": {
+          "queries": 565,
+          "users": 454,
+          "recall10": 0.09085545722713863,
+          "ndcg10": 0.04849659382680773,
+          "recall100": 0.290353982300885,
+          "coverage": 0.15086377423183436
+        },
+        "watch": {
+          "queries": 565,
+          "users": 454,
+          "recall10": 0.07182890855457226,
+          "ndcg10": 0.043154122892658756,
+          "recall100": 0.290353982300885,
+          "coverage": 0.07239878675985757
+        }
+      },
+      "5": {
+        "blend": {
+          "queries": 5,
+          "users": 5,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.2,
+          "coverage": 0.00527495714097323
+        },
+        "rrf": {
+          "queries": 5,
+          "users": 5,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.2,
+          "coverage": 0.005538704998021891
+        },
+        "watch": {
+          "queries": 5,
+          "users": 5,
+          "recall10": 0.2,
+          "ndcg10": 0.06666666666666667,
+          "recall100": 0.2,
+          "coverage": 0.00527495714097323
+        }
+      },
+      "6": {
+        "blend": {
+          "queries": 48,
+          "users": 46,
+          "recall10": 0.010416666666666666,
+          "ndcg10": 0.006386949924640191,
+          "recall100": 0.13541666666666666,
+          "coverage": 0.023869181062903862
+        },
+        "rrf": {
+          "queries": 48,
+          "users": 46,
+          "recall10": 0.010416666666666666,
+          "ndcg10": 0.004257966616426794,
+          "recall100": 0.13541666666666666,
+          "coverage": 0.025451668205195833
+        },
+        "watch": {
+          "queries": 48,
+          "users": 46,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.13541666666666666,
+          "coverage": 0.02334168534880654
+        }
+      },
+      "7": {
+        "blend": {
+          "queries": 5,
+          "users": 4,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.6,
+          "coverage": 0.005143083212448898
+        },
+        "rrf": {
+          "queries": 5,
+          "users": 4,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.6,
+          "coverage": 0.00527495714097323
+        },
+        "watch": {
+          "queries": 5,
+          "users": 4,
+          "recall10": 0.2,
+          "ndcg10": 0.1,
+          "recall100": 0.6,
+          "coverage": 0.004615587498351576
+        }
+      },
+      "8": {
+        "blend": {
+          "queries": 3,
+          "users": 3,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.0,
+          "coverage": 0.003956217855729922
+        },
+        "rrf": {
+          "queries": 3,
+          "users": 3,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.0,
+          "coverage": 0.0038243439272055914
+        },
+        "watch": {
+          "queries": 3,
+          "users": 3,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.0,
+          "coverage": 0.00356059607015693
+        }
+      },
+      "9": {
+        "blend": {
+          "queries": 4,
+          "users": 2,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.25,
+          "coverage": 0.003033100356059607
+        },
+        "rrf": {
+          "queries": 4,
+          "users": 2,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.25,
+          "coverage": 0.0027693524990109455
+        },
+        "watch": {
+          "queries": 4,
+          "users": 2,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.25,
+          "coverage": 0.0027693524990109455
+        }
+      },
+      "10": {
+        "blend": {
+          "queries": 3,
+          "users": 1,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.0,
+          "coverage": 0.0015824871422919688
+        },
+        "rrf": {
+          "queries": 3,
+          "users": 1,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.0,
+          "coverage": 0.0018462349993406304
+        },
+        "watch": {
+          "queries": 3,
+          "users": 1,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.0,
+          "coverage": 0.0018462349993406304
+        }
+      },
+      "11": {
+        "blend": {
+          "queries": 5,
+          "users": 5,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.6,
+          "coverage": 0.004351839641302914
+        },
+        "rrf": {
+          "queries": 5,
+          "users": 5,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.6,
+          "coverage": 0.004747461426875907
+        },
+        "watch": {
+          "queries": 5,
+          "users": 5,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.6,
+          "coverage": 0.005143083212448898
+        }
+      },
+      "12": {
+        "blend": {
+          "queries": 4,
+          "users": 4,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.0,
+          "coverage": 0.004351839641302914
+        },
+        "rrf": {
+          "queries": 4,
+          "users": 4,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.0,
+          "coverage": 0.004483713569827246
+        },
+        "watch": {
+          "queries": 4,
+          "users": 4,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 0.0,
+          "coverage": 0.004351839641302914
+        }
+      },
+      "14": {
+        "blend": {
+          "queries": 1,
+          "users": 1,
+          "recall10": 1.0,
+          "ndcg10": 0.5,
+          "recall100": 1.0,
+          "coverage": 0.0013187392852433075
+        },
+        "rrf": {
+          "queries": 1,
+          "users": 1,
+          "recall10": 1.0,
+          "ndcg10": 0.5,
+          "recall100": 1.0,
+          "coverage": 0.0013187392852433075
+        },
+        "watch": {
+          "queries": 1,
+          "users": 1,
+          "recall10": 0.0,
+          "ndcg10": 0.0,
+          "recall100": 1.0,
+          "coverage": 0.0013187392852433075
+        }
+      }
+    },
+    "interpretation": "One query per observed user/date/tab with positives in that scene. All 100 candidates share the same scene. Zero-positive scenes are counted but excluded from Recall/NDCG and coverage. Unknown candidate feedback stays unknown."
+  },
+  "conclusion": "场景一致后，融合尚未同时获得两个Top10指标区间下界均大于0的结果。当前证据支持保留RRF，停止在此诊断阶段。",
+  "input_sha256": {
+    "configs\\release.yaml": "989cd529e270cd70803e7611e59ceb2f5a5488c828a7bb0f338abb035c0cb0f2",
+    "artifacts\\release\\single_long_view_ranker\\feature_space.json": "151699d90b9160339d85f18c2f03201c0d09d6a172fbee2e5819dada08c0e450",
+    "artifacts\\release\\single_long_view_ranker\\model.pt": "7c8d26437e3e86c927722cc92b6905009608cc3776c46fbbbba26845eac56bec",
+    "reports\\release\\selected_dev_recommendations.parquet": "3b9fe351d98a76adbd70e16d4813dbf6409f4931eb68057539b92a1faccce23a"
+  }
+}

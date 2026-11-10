@@ -30,6 +30,7 @@ class BootstrapTests(unittest.TestCase):
 
     def test_delayed_history_masks_equal_or_later_completion(self):
         inputs=Inputs.__new__(Inputs)
+        inputs.use_history_matches=False
         inputs.length=2;inputs.lengths=np.array([2]);inputs.ends=np.array([2])
         inputs.pool=np.array([2,3]);inputs.item_map=np.arange(4);inputs.row_map=np.arange(4)
         inputs.history_available_at=np.array([9,10]);inputs.events=pd.DataFrame({'time_ms':[10]})

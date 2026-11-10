@@ -102,6 +102,12 @@ def build():
         ('尝试一：屏蔽ID','训练时随机屏蔽50%的历史视频ID向量，保留标签、历史长度和有效位置。开发预测损失从0.48154降到0.46849，但GAUC下降0.126个百分点。概率误差改善与组内排序改善是两个目标。'),
         ('尝试二：保留ID并加正则','对当前批次实际使用的视频ID向量加L2惩罚，限制参数过度拟合。0.001和0.01两组都在第一轮达到最佳开发GAUC；0.01提高0.026个百分点，差值区间包含零。'),
         ('最终取舍','事先约定至少提高0.05个百分点且区间下界高于零，才补另外两个种子和同正则的B0。两组均未达到条件，本轮结束，继续采用B0。')]
+    qa=[
+        ('你遇到了什么问题，怎么排查？','加入最近20条历史后，模型在训练集上拟合得更好，开发排序效果却下降。我先检查学习曲线和ID覆盖，再做屏蔽历史ID、视频ID正则化两类对照。前者降低了GAUC，后者只有小幅变化，因此保留基础模型。'),
+        ('为什么预测损失下降，GAUC却下降？','预测损失考察概率与标签的偏差；GAUC考察同一用户下正例是否排在负例前面。屏蔽ID后，概率整体变小，大量负例的误差下降，但正负例的先后关系没有随之改善。'),
+        ('这个正则化具体怎么实现？','把当前批次的候选ID与有效历史ID合并去重，排除补位和未知ID，对所取向量各坐标的平方求平均，乘以0.001或0.01后加到预测损失上。候选与历史共享向量表，所以两部分都会受到影响。'),
+        ('为什么不再多跑几个参数？','本轮验证的是两种针对性修改。较好设置只提高0.026个百分点，仍落后原B0约0.706个百分点，也没有达到事先约定的追加条件。因此先完成记录和交付，后续研究再提出新的假设。'),
+        ('这次能确定主要原因了吗？','已确定的是训练后期过拟合、开发ID覆盖较低，以及两种改动的实际结果。正则化和屏蔽没有明显解决差距，说明当前证据还不足以确定主要原因。')]
     formula='L_total = L_BCE + λ × mean(E_used²)'
     text=['# 历史模型效果下降：两次改进与最终取舍','',CONCLUSION,'','## 对照结果','',scope,'',md_table,
           '', '## 训练曲线','', '![历史模型排查训练曲线](figures/history_followup_curves.png)','',CAPTION,
@@ -109,7 +115,9 @@ def build():
     for title,body in steps:text+=['',f'### {title}','',body]
     text+=['','## 正则化的计算','',r'$$',r'L_{\mathrm{total}}=L_{\mathrm{BCE}}+\lambda\frac{1}{|S|d}\sum_{i\in S}\sum_{j=1}^{d}E_{ij}^{2}',r'$$','',
            'S是本批次去重后的有效视频ID集合，d=16为ID向量维度，E是视频ID向量表，λ为正则强度。S为空时惩罚为0。这个批次内平方均值方法与DIN按频率修正的MBA不同。',
-           '训练日志分别记录BCE、加权正则项和总目标；开发预测损失只计算BCE。数据划分、学习率、20条历史、批次大小和提前停止规则保持一致。']
+           '训练日志分别记录BCE、加权正则项和总目标；开发预测损失只计算BCE。数据划分、学习率、20条历史、批次大小和提前停止规则保持一致。',
+           '', '## 面试时如何讲']
+    for q,a in qa:text+=['',f'**问题：{q}**','',f'答案：{a}']
     text+=['','## 数据与复现','',
            '训练3,764,530条曝光；全部实验最多5轮，连续2轮开发GAUC未改善即停止。新实验只使用开发集选择设置；本轮没有追加种子或测试评价。',
            '原三种子主实验的B0开发GAUC均值为0.69490、测试均值为0.69076；上表0.69461是种子2026的开发结果。Pure融合Recall@100属于另一套实验。',
@@ -119,13 +127,15 @@ def build():
     assert len(curve_rows)==17, 'Review new epochs before updating the case text'
     image='data:image/svg+xml;base64,'+base64.b64encode((figdir/'history_followup_curves.svg').read_bytes()).decode()
     tr=lambda values:'<tr>'+''.join('<td>'+html.escape(v)+'</td>' for v in values)+'</tr>'
-    parts=['<section id="history-followup"><div class="section-head"><h2>历史模型排查：两次尝试，保留B0</h2></div>',
-           '<div class="finding"><p>'+CONCLUSION+'</p></div>', '<p>'+scope+'</p>',
+    parts=['<section id="history-followup"><div class="section-head"><h2>历史基线排查：ID屏蔽与正则化</h2></div>',
+           '<div class="finding"><p>这一较早阶段的排查结论：'+CONCLUSION+'</p></div>', '<p>'+scope+'</p>',
            '<div class="table-wrap"><table><thead><tr>'+''.join('<th>'+html.escape(v)+'</th>' for v in headers)+'</tr></thead><tbody>',
            *[tr(r) for r in rows],'</tbody></table></div>',
            '<figure><img class="chart" src="'+image+'" alt="五种设置在种子2026下的训练预测损失、开发预测损失和开发GAUC曲线"><figcaption>'+CAPTION+'</figcaption></figure>']
     for title,body in steps:parts+=['<h3>'+title+'</h3><p>'+body+'</p>']
-    parts+=['<details><summary>正则化怎么算？</summary><p><code>'+formula+'</code></p><p>S为本批次去重后的有效视频ID，E_used为对应的16维向量。候选和历史共享向量表；排除补位与未知ID。开发损失只计BCE。采用批次内L2平方均值，DIN原文另含频率修正。</p></details>']
+    parts+=['<details><summary>正则化怎么算？</summary><p><code>'+formula+'</code></p><p>S为本批次去重后的有效视频ID，E_used为对应的16维向量。候选和历史共享向量表；排除补位与未知ID。开发损失只计BCE。采用批次内L2平方均值，DIN原文另含频率修正。</p></details>',
+            '<h3>把这个案例讲清楚</h3>']
+    for q,a in qa:parts+=['<details><summary>'+q+'</summary><p>'+a+'</p></details>']
     parts+=['<p>原三种子主实验中，B0测试GAUC均值为0.69076。上表为种子2026的开发对照；Pure召回结果在前文单独报告。</p></section>']
     section='\n'.join(parts)
     (OUT/'history_followup_section.html').write_text(section,encoding='utf-8')

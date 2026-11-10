@@ -1,0 +1,405 @@
+{
+  "seed": 2026,
+  "split": "dev",
+  "rows": 1642223,
+  "frequency_source": "full_author formal-training author counts; unknown includes missing authors",
+  "grouping": "Exposure-weighted user GAUC within each author-frequency group",
+  "groups": {
+    "unknown": {
+      "rows": 332116,
+      "exposure_share": 0.20223562816986487,
+      "variants": {
+        "baseline": {
+          "auc": 0.8109363757636484,
+          "log_loss": 0.40319275856018066,
+          "gauc": 0.7216988722624719,
+          "rows": 332116,
+          "positive_rate": 0.20239916173866962,
+          "valid_users": 971,
+          "total_users": 983,
+          "covered_rows": 331958,
+          "user_coverage": 0.987792472024415,
+          "exposure_coverage": 0.9995242626070409
+        },
+        "full_author": {
+          "auc": 0.8099611988539936,
+          "log_loss": 0.403371125459671,
+          "gauc": 0.7205326759927339,
+          "rows": 332116,
+          "positive_rate": 0.20239916173866962,
+          "valid_users": 971,
+          "total_users": 983,
+          "covered_rows": 331958,
+          "user_coverage": 0.987792472024415,
+          "exposure_coverage": 0.9995242626070409
+        },
+        "high_author": {
+          "auc": 0.8102436101592287,
+          "log_loss": 0.39999908208847046,
+          "gauc": 0.7212067192517948,
+          "rows": 332116,
+          "positive_rate": 0.20239916173866962,
+          "valid_users": 971,
+          "total_users": 983,
+          "covered_rows": 331958,
+          "user_coverage": 0.987792472024415,
+          "exposure_coverage": 0.9995242626070409
+        },
+        "high_author_small": {
+          "auc": 0.8111566463134614,
+          "log_loss": 0.3979366719722748,
+          "gauc": 0.7214569050433464,
+          "rows": 332116,
+          "positive_rate": 0.20239916173866962,
+          "valid_users": 971,
+          "total_users": 983,
+          "covered_rows": 331958,
+          "user_coverage": 0.987792472024415,
+          "exposure_coverage": 0.9995242626070409
+        },
+        "history_matches": {
+          "auc": 0.811329678775115,
+          "log_loss": 0.39999112486839294,
+          "gauc": 0.7237802878658728,
+          "rows": 332116,
+          "positive_rate": 0.20239916173866962,
+          "valid_users": 971,
+          "total_users": 983,
+          "covered_rows": 331958,
+          "user_coverage": 0.987792472024415,
+          "exposure_coverage": 0.9995242626070409
+        }
+      }
+    },
+    "1": {
+      "rows": 99306,
+      "exposure_share": 0.06047047203698889,
+      "variants": {
+        "baseline": {
+          "auc": 0.8068153636281472,
+          "log_loss": 0.40631812810897827,
+          "gauc": 0.7108315665297527,
+          "rows": 99306,
+          "positive_rate": 0.20189112440335932,
+          "valid_users": 948,
+          "total_users": 978,
+          "covered_rows": 99076,
+          "user_coverage": 0.9693251533742331,
+          "exposure_coverage": 0.9976839264495599
+        },
+        "full_author": {
+          "auc": 0.8051797802979506,
+          "log_loss": 0.4050482213497162,
+          "gauc": 0.7042530020367019,
+          "rows": 99306,
+          "positive_rate": 0.20189112440335932,
+          "valid_users": 948,
+          "total_users": 978,
+          "covered_rows": 99076,
+          "user_coverage": 0.9693251533742331,
+          "exposure_coverage": 0.9976839264495599
+        },
+        "high_author": {
+          "auc": 0.8066241660264638,
+          "log_loss": 0.4030856192111969,
+          "gauc": 0.708804655882397,
+          "rows": 99306,
+          "positive_rate": 0.20189112440335932,
+          "valid_users": 948,
+          "total_users": 978,
+          "covered_rows": 99076,
+          "user_coverage": 0.9693251533742331,
+          "exposure_coverage": 0.9976839264495599
+        },
+        "high_author_small": {
+          "auc": 0.8071108032314785,
+          "log_loss": 0.40109601616859436,
+          "gauc": 0.7095234385075467,
+          "rows": 99306,
+          "positive_rate": 0.20189112440335932,
+          "valid_users": 948,
+          "total_users": 978,
+          "covered_rows": 99076,
+          "user_coverage": 0.9693251533742331,
+          "exposure_coverage": 0.9976839264495599
+        },
+        "history_matches": {
+          "auc": 0.8082810366428588,
+          "log_loss": 0.4027619957923889,
+          "gauc": 0.7146284356953337,
+          "rows": 99306,
+          "positive_rate": 0.20189112440335932,
+          "valid_users": 948,
+          "total_users": 978,
+          "covered_rows": 99076,
+          "user_coverage": 0.9693251533742331,
+          "exposure_coverage": 0.9976839264495599
+        }
+      }
+    },
+    "2-5": {
+      "rows": 210521,
+      "exposure_share": 0.12819269977341688,
+      "variants": {
+        "baseline": {
+          "auc": 0.804742384453208,
+          "log_loss": 0.42071226239204407,
+          "gauc": 0.706939032236979,
+          "rows": 210521,
+          "positive_rate": 0.21654371772887265,
+          "valid_users": 966,
+          "total_users": 983,
+          "covered_rows": 210365,
+          "user_coverage": 0.982706002034588,
+          "exposure_coverage": 0.9992589812892776
+        },
+        "full_author": {
+          "auc": 0.8035379846438138,
+          "log_loss": 0.4192723035812378,
+          "gauc": 0.7014816124924868,
+          "rows": 210521,
+          "positive_rate": 0.21654371772887265,
+          "valid_users": 966,
+          "total_users": 983,
+          "covered_rows": 210365,
+          "user_coverage": 0.982706002034588,
+          "exposure_coverage": 0.9992589812892776
+        },
+        "high_author": {
+          "auc": 0.8054378843105745,
+          "log_loss": 0.4173050820827484,
+          "gauc": 0.7065354204505864,
+          "rows": 210521,
+          "positive_rate": 0.21654371772887265,
+          "valid_users": 966,
+          "total_users": 983,
+          "covered_rows": 210365,
+          "user_coverage": 0.982706002034588,
+          "exposure_coverage": 0.9992589812892776
+        },
+        "high_author_small": {
+          "auc": 0.8058535776753211,
+          "log_loss": 0.4155859053134918,
+          "gauc": 0.7071128430660114,
+          "rows": 210521,
+          "positive_rate": 0.21654371772887265,
+          "valid_users": 966,
+          "total_users": 983,
+          "covered_rows": 210365,
+          "user_coverage": 0.982706002034588,
+          "exposure_coverage": 0.9992589812892776
+        },
+        "history_matches": {
+          "auc": 0.8068016581062004,
+          "log_loss": 0.41698184609413147,
+          "gauc": 0.7102958405481362,
+          "rows": 210521,
+          "positive_rate": 0.21654371772887265,
+          "valid_users": 966,
+          "total_users": 983,
+          "covered_rows": 210365,
+          "user_coverage": 0.982706002034588,
+          "exposure_coverage": 0.9992589812892776
+        }
+      }
+    },
+    "6-20": {
+      "rows": 331282,
+      "exposure_share": 0.20172777996654534,
+      "variants": {
+        "baseline": {
+          "auc": 0.7934093007247072,
+          "log_loss": 0.45670032501220703,
+          "gauc": 0.6876231407359493,
+          "rows": 331282,
+          "positive_rate": 0.24948231416134894,
+          "valid_users": 977,
+          "total_users": 985,
+          "covered_rows": 331086,
+          "user_coverage": 0.9918781725888325,
+          "exposure_coverage": 0.9994083590415417
+        },
+        "full_author": {
+          "auc": 0.7925445274494021,
+          "log_loss": 0.45570069551467896,
+          "gauc": 0.6832035615920189,
+          "rows": 331282,
+          "positive_rate": 0.24948231416134894,
+          "valid_users": 977,
+          "total_users": 985,
+          "covered_rows": 331086,
+          "user_coverage": 0.9918781725888325,
+          "exposure_coverage": 0.9994083590415417
+        },
+        "high_author": {
+          "auc": 0.7936919357202254,
+          "log_loss": 0.4544488489627838,
+          "gauc": 0.6863795338827774,
+          "rows": 331282,
+          "positive_rate": 0.24948231416134894,
+          "valid_users": 977,
+          "total_users": 985,
+          "covered_rows": 331086,
+          "user_coverage": 0.9918781725888325,
+          "exposure_coverage": 0.9994083590415417
+        },
+        "high_author_small": {
+          "auc": 0.7938547255999916,
+          "log_loss": 0.4534808099269867,
+          "gauc": 0.6875848886906134,
+          "rows": 331282,
+          "positive_rate": 0.24948231416134894,
+          "valid_users": 977,
+          "total_users": 985,
+          "covered_rows": 331086,
+          "user_coverage": 0.9918781725888325,
+          "exposure_coverage": 0.9994083590415417
+        },
+        "history_matches": {
+          "auc": 0.7951873107271736,
+          "log_loss": 0.4537561237812042,
+          "gauc": 0.6911661861726317,
+          "rows": 331282,
+          "positive_rate": 0.24948231416134894,
+          "valid_users": 977,
+          "total_users": 985,
+          "covered_rows": 331086,
+          "user_coverage": 0.9918781725888325,
+          "exposure_coverage": 0.9994083590415417
+        }
+      }
+    },
+    "21-100": {
+      "rows": 415487,
+      "exposure_share": 0.25300278951153404,
+      "variants": {
+        "baseline": {
+          "auc": 0.7761982976943067,
+          "log_loss": 0.5025386810302734,
+          "gauc": 0.6649679759634505,
+          "rows": 415487,
+          "positive_rate": 0.2939682830028376,
+          "valid_users": 975,
+          "total_users": 982,
+          "covered_rows": 415350,
+          "user_coverage": 0.9928716904276986,
+          "exposure_coverage": 0.999670266458397
+        },
+        "full_author": {
+          "auc": 0.7767708119848868,
+          "log_loss": 0.500566303730011,
+          "gauc": 0.6636940241562583,
+          "rows": 415487,
+          "positive_rate": 0.2939682830028376,
+          "valid_users": 975,
+          "total_users": 982,
+          "covered_rows": 415350,
+          "user_coverage": 0.9928716904276986,
+          "exposure_coverage": 0.999670266458397
+        },
+        "high_author": {
+          "auc": 0.7765855894016975,
+          "log_loss": 0.5002202391624451,
+          "gauc": 0.6640805422806739,
+          "rows": 415487,
+          "positive_rate": 0.2939682830028376,
+          "valid_users": 975,
+          "total_users": 982,
+          "covered_rows": 415350,
+          "user_coverage": 0.9928716904276986,
+          "exposure_coverage": 0.999670266458397
+        },
+        "high_author_small": {
+          "auc": 0.7764957305073771,
+          "log_loss": 0.5000497102737427,
+          "gauc": 0.6645533538576318,
+          "rows": 415487,
+          "positive_rate": 0.2939682830028376,
+          "valid_users": 975,
+          "total_users": 982,
+          "covered_rows": 415350,
+          "user_coverage": 0.9928716904276986,
+          "exposure_coverage": 0.999670266458397
+        },
+        "history_matches": {
+          "auc": 0.7780195332104252,
+          "log_loss": 0.49953630566596985,
+          "gauc": 0.6689341894658889,
+          "rows": 415487,
+          "positive_rate": 0.2939682830028376,
+          "valid_users": 975,
+          "total_users": 982,
+          "covered_rows": 415350,
+          "user_coverage": 0.9928716904276986,
+          "exposure_coverage": 0.999670266458397
+        }
+      }
+    },
+    ">100": {
+      "rows": 253511,
+      "exposure_share": 0.15437063054164996,
+      "variants": {
+        "baseline": {
+          "auc": 0.7591982149937672,
+          "log_loss": 0.5466794967651367,
+          "gauc": 0.654717578190317,
+          "rows": 253511,
+          "positive_rate": 0.3469711373470974,
+          "valid_users": 972,
+          "total_users": 982,
+          "covered_rows": 253389,
+          "user_coverage": 0.9898167006109979,
+          "exposure_coverage": 0.9995187585548556
+        },
+        "full_author": {
+          "auc": 0.7604140447310003,
+          "log_loss": 0.5447052717208862,
+          "gauc": 0.6572663491183682,
+          "rows": 253511,
+          "positive_rate": 0.3469711373470974,
+          "valid_users": 972,
+          "total_users": 982,
+          "covered_rows": 253389,
+          "user_coverage": 0.9898167006109979,
+          "exposure_coverage": 0.9995187585548556
+        },
+        "high_author": {
+          "auc": 0.7608926854066812,
+          "log_loss": 0.5447268486022949,
+          "gauc": 0.6587428347018917,
+          "rows": 253511,
+          "positive_rate": 0.3469711373470974,
+          "valid_users": 972,
+          "total_users": 982,
+          "covered_rows": 253389,
+          "user_coverage": 0.9898167006109979,
+          "exposure_coverage": 0.9995187585548556
+        },
+        "high_author_small": {
+          "auc": 0.7646882977719001,
+          "log_loss": 0.540758490562439,
+          "gauc": 0.6658611164632635,
+          "rows": 253511,
+          "positive_rate": 0.3469711373470974,
+          "valid_users": 972,
+          "total_users": 982,
+          "covered_rows": 253389,
+          "user_coverage": 0.9898167006109979,
+          "exposure_coverage": 0.9995187585548556
+        },
+        "history_matches": {
+          "auc": 0.7605680352675176,
+          "log_loss": 0.5439046621322632,
+          "gauc": 0.6582682271095,
+          "rows": 253511,
+          "positive_rate": 0.3469711373470974,
+          "valid_users": 972,
+          "total_users": 982,
+          "covered_rows": 253389,
+          "user_coverage": 0.9898167006109979,
+          "exposure_coverage": 0.9995187585548556
+        }
+      }
+    }
+  }
+}

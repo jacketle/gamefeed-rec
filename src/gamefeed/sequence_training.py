@@ -48,7 +48,11 @@ class Inputs:
         columns=['user_id','video_id','date','time_ms','tab','long_view','is_rand',
                  'play_time_ms','source','source_row','split','history_start','history_end','history_len']
         self.events = pd.concat([compact_events(pd.read_parquet(p, columns=columns)) for p in paths], ignore_index=True)
-        self.items = pd.read_parquet(root/'items.parquet',columns=['video_id','video_duration','tag']).sort_values('video_id').reset_index(drop=True)
+        model_config = config.get('model', {})
+        use_author = model_config.get('use_author', False)
+        self.use_history_matches = model_config.get('use_history_matches', False)
+        item_columns = ['video_id','video_duration','tag'] + (['author_id'] if use_author or self.use_history_matches else [])
+        self.items = pd.read_parquet(root/'items.parquet',columns=item_columns).sort_values('video_id').reset_index(drop=True)
         raw = self.items.video_id.to_numpy(np.int64)
         self.row_map = np.zeros(int(raw.max())+1, np.int32)
         self.row_map[raw] = np.arange(len(raw), dtype=np.int32)+1
@@ -104,9 +108,39 @@ class Inputs:
         self.feature_info=dict(vocabulary_items=len(known),tags=len(tag_set),max_tags=max_tags,
             numeric_mean=mean.tolist(),numeric_std=std.tolist(),history_length=self.length)
         self.output_root=root
-        # Feature encoding arrays saved once, sufficient to reproduce mappings locally.
-        np.savez(root/'sequence_feature_maps.npz',known_item_ids=known,raw_item_rows=raw,
-                 users=np.array(user_ids),tabs=np.array(tab_ids),tags=np.array(tag_set))
+        self.feature_maps = dict(known_item_ids=known,raw_item_rows=raw,
+                                users=np.array(user_ids),tabs=np.array(tab_ids),tags=np.array(tag_set))
+        if use_author:
+            # Only authors of formal training exposures enter this vocabulary.
+            author_ids = self.items.author_id.fillna(-1).to_numpy(np.int64)
+            train_authors = author_ids[self.rows[self.train]-1]
+            all_authors, counts = np.unique(train_authors[train_authors >= 0], return_counts=True)
+            minimum = int(model_config.get('author_min_count', 1))
+            if minimum < 1:
+                raise ValueError('author_min_count must be positive')
+            self.author_kept_indices = np.flatnonzero(counts >= minimum)
+            self.author_full_count = len(all_authors)
+            known_authors = all_authors[self.author_kept_indices]
+            author_map = {int(a):i+1 for i,a in enumerate(known_authors)}
+            author_rows = np.zeros(len(self.items)+1, np.int32)
+            author_rows[1:] = self.items.author_id.map(author_map).fillna(0).to_numpy(np.int32)
+            self.authors = author_rows[self.rows]
+            self.spec['num_authors'] = len(known_authors)+1
+            self.feature_maps['authors'] = known_authors
+            self.feature_info['author_count'] = len(known_authors)
+            if 'author_min_count' in model_config or model_config.get('paired_initialization'):
+                self.feature_info.update(author_min_count=minimum, full_train_author_count=len(all_authors))
+                self.feature_maps['all_train_authors'] = all_authors
+                self.feature_maps['author_train_counts'] = counts[self.author_kept_indices]
+        if self.use_history_matches:
+            self.raw_author_rows = np.full(len(self.items)+1, -1, dtype=np.int64)
+            self.raw_author_rows[1:] = self.items.author_id.fillna(-1).to_numpy(np.int64)
+            self.spec['match_dim'] = 3
+            self.feature_info['history_matches'] = dict(
+                names=['same_author_fraction', 'same_author_any', 'shared_tag_history_fraction'],
+                denominator='valid prior history positions; empty history yields zero',
+                author_rule='raw author IDs >= 0, independent of embedding frequency threshold',
+                tag_rule='any shared known tag (>1) marks one matching history position')
 
     def batch(self, indices, device):
         offsets=np.arange(self.length)[None,:]
@@ -121,7 +155,45 @@ class Inputs:
         arrays=dict(item=self.ids[indices],tags=self.tag_array[self.rows[indices]],history=history,
                     history_tags=history_tags,mask=valid,user=self.users[indices],tab=self.tabs[indices],
                     numeric=self.numeric[indices],label=self.y[indices])
-        return {k:torch.as_tensor(a,dtype=torch.bool if k=='mask' else torch.float32 if k in ('numeric','label') else torch.long,device=device) for k,a in arrays.items()}
+        if hasattr(self, 'authors'):
+            arrays['author'] = self.authors[indices]
+        if self.use_history_matches:
+            candidate_author = self.raw_author_rows[self.rows[indices], None]
+            history_author = self.raw_author_rows[self.row_map[history_raw]]
+            same_author = valid & (candidate_author >= 0) & (history_author >= 0) & (candidate_author == history_author)
+            candidate_tags = arrays['tags'][:, None, :, None]
+            prior_tags = history_tags[:, :, None, :]
+            shared_tags = ((candidate_tags > 1) & (prior_tags > 1) & (candidate_tags == prior_tags)).any(axis=(2, 3)) & valid
+            denominator = valid.sum(1).clip(min=1)
+            arrays['matches'] = np.column_stack([same_author.sum(1)/denominator,
+                same_author.any(1), shared_tags.sum(1)/denominator]).astype(np.float32)
+        return {k:torch.as_tensor(a,dtype=torch.bool if k=='mask' else torch.float32 if k in ('numeric','label','matches') else torch.long,device=device) for k,a in arrays.items()}
+
+
+def initialize_author_weights(model, inputs, seed, std):
+    """Same raw author gets the same initial vector across frequency thresholds."""
+    if not np.isfinite(std) or std <= 0:
+        raise ValueError('author_init_std must be finite and positive')
+    if model.author is None:
+        return
+    generator = torch.Generator(device='cpu').manual_seed(int(seed)+17071)
+    full = torch.randn((inputs.author_full_count, 16), generator=generator)
+    selected = full[inputs.author_kept_indices] * std
+    with torch.no_grad():
+        model.author.weight.zero_()
+        model.author.weight[1:].copy_(selected.to(model.author.weight.device))
+
+
+def evaluation_steps(num_batches, epoch, fraction=1.0):
+    """Quarter evaluations in the first two epochs; always include epoch end."""
+    if not np.isfinite(fraction) or not 0 < fraction <= 1:
+        raise ValueError('eval_every_fraction must be in (0, 1]')
+    pieces = round(1/fraction)
+    if not np.isclose(pieces*fraction, 1):
+        raise ValueError('eval_every_fraction must evenly divide one epoch')
+    if epoch > 2:
+        return {num_batches}
+    return {int(np.ceil(num_batches*i/pieces)) for i in range(1, pieces+1)}
 
 
 def evaluate(model, inputs, ids, batch_size, device):
@@ -148,13 +220,22 @@ def run(config, modes, epochs=None, seed=None):
     torch.use_deterministic_algorithms(True)
     started=time.perf_counter(); inputs=Inputs(config)
     paths=config['resolved_paths']; bs=int(cfg['batch_size'])
+    eval_bs = int(cfg.get('eval_batch_size', bs))
+    eval_fraction = float(cfg.get('eval_every_fraction', 1.0))
+    evaluation_steps(1, 1, eval_fraction)
+    if eval_bs < 1:
+        raise ValueError('eval_batch_size must be positive')
+    paths.artifact_dir.mkdir(parents=True,exist_ok=True)
+    paths.report_dir.mkdir(parents=True,exist_ok=True)
+    map_dir = paths.artifact_dir if cfg.get('feature_maps_in_artifact', False) or cfg.get('use_author', False) else paths.processed_dir
+    np.savez(map_dir/'sequence_feature_maps.npz', **inputs.feature_maps)
     report_path=paths.report_dir/'experiment_results.json'
     report=json.loads(report_path.read_text(encoding='utf-8')) if report_path.exists() else {}
     report['features']=inputs.feature_info
     report['feature_rules']='Untrained user/scene IDs map to zero; untrained item IDs use zero embedding and retain known tags'
     report['training_tabs']={str(t):int(n) for t,n in inputs.events.iloc[inputs.train].tab.value_counts().items()}
     report['hardware']=dict(torch=torch.__version__,device=torch.cuda.get_device_name(0) if device.type=='cuda' else 'cpu',batch_size=bs)
-    # Frozen historical user-scenario propensity: constant within user x tab.
+    # Historical user-scenario propensity: constant within user x tab.
     historical=inputs.events.loc[inputs.events.split.isin(['warmup','train']) & inputs.events.is_rand.eq(0),['user_id','tab','long_view']]
     global_rate=float(historical.long_view.mean())
     tab_stats=historical.groupby('tab').long_view.agg(['sum','count'])
@@ -174,16 +255,38 @@ def run(config, modes, epochs=None, seed=None):
     for mode in modes:
         torch.manual_seed(seed); np.random.seed(seed)
         history_id_dropout=float(cfg.get('history_id_dropout',0.0))
-        model=SequenceRanker(**inputs.spec,mode=mode,history_id_dropout=history_id_dropout).to(device)
+        model_kwargs = dict(history_id_dropout=history_id_dropout,
+                            paired_initialization=bool(cfg.get('paired_initialization', False)))
+        model=SequenceRanker(**inputs.spec,mode=mode,**model_kwargs)
+        author_std = float(cfg.get('author_init_std', 1.0))
+        if model.author is not None and (model_kwargs['paired_initialization'] or 'author_init_std' in cfg):
+            initialize_author_weights(model, inputs, seed, author_std)
+        initialization = dict(paired=model_kwargs['paired_initialization'],
+            extra_input_columns=model.output[0].in_features-92)
+        if initialization['extra_input_columns']:
+            initialization['extra_input_initial_max_abs'] = float(model.output[0].weight[:,92:].detach().abs().max())
+        if model.author is not None and (model_kwargs['paired_initialization'] or 'author_init_std' in cfg):
+            initialization.update(author_init_std=author_std, author_generator_seed=seed+17071,
+                full_train_author_count=inputs.author_full_count,
+                author_alignment='all formal training raw authors sorted; retained rows selected after initialization')
+        model = model.to(device)
         optim=torch.optim.Adam(model.parameters(),lr=cfg['learning_rate'])
         loss_fn=torch.nn.BCEWithLogitsLoss()
         out=paths.artifact_dir/f'{mode}_seed{seed}';out.mkdir(parents=True,exist_ok=True)
-        best=-float('inf'); stale=0; curve=[]
+        best=-float('inf'); stale=0; curve=[]; evaluations=[]
+        result=dict(mode=mode,seed=seed,history_id_dropout=history_id_dropout,item_l2=item_l2,
+                    epochs=curve,evaluations=evaluations,initialization=initialization,
+                    model_kwargs=model_kwargs,eval_batch_size=eval_bs,eval_every_fraction=eval_fraction,
+                    parameters=sum(p.numel() for p in model.parameters()),status='training')
+        report.setdefault('training',{})[f'{mode}_seed{seed}']=result
         rng=np.random.default_rng(seed)
         if device.type=='cuda':torch.cuda.reset_peak_memory_stats()
         for epoch in range(1,(epochs or cfg['epochs'])+1):
             t=time.perf_counter(); model.train(); total_loss=0.; total_penalty=0.
+            training_seconds=0.; epoch_improved=False
             order=rng.permutation(inputs.train)
+            num_batches=(len(order)+bs-1)//bs
+            eval_steps=evaluation_steps(num_batches,epoch,eval_fraction)
             for start in range(0,len(order),bs):
                 ix=order[start:start+bs]; batch=inputs.batch(ix,device)
                 optim.zero_grad(set_to_none=True)
@@ -193,26 +296,43 @@ def run(config, modes, epochs=None, seed=None):
                 total_loss+=loss.item()*len(ix)
                 total_penalty+=penalty.item()*len(ix)
                 if start and start//bs%500==0:print(f'{mode} epoch {epoch}: {start:,}/{len(order):,}',flush=True)
-            training_seconds=time.perf_counter()-t
-            scores=evaluate(model,inputs,inputs.dev,bs,device)
-            m=metrics(inputs.events.iloc[inputs.dev].reset_index(drop=True),scores)
-            point=dict(epoch=epoch,train_loss=total_loss/len(order),train_regularization=total_penalty/len(order),
-                       train_objective=(total_loss+total_penalty)/len(order),train_seconds=training_seconds,dev=m)
-            curve.append(point)
-            print(f'{mode} epoch {epoch}: BCE={point["train_loss"]:.5f} L2={point["train_regularization"]:.6f} dev GAUC={m["gauc"]:.5f} train={training_seconds:.1f}s',flush=True)
-            if m['gauc']>best:
-                best=m['gauc']; stale=0
-                torch.save({'state_dict':model.state_dict(),'spec':inputs.spec,'mode':mode,'seed':seed,'epoch':epoch,
-                            'feature_info':inputs.feature_info,'history_id_dropout':history_id_dropout,'item_l2':item_l2},out/'best.pt')
-                prediction=inputs.events.iloc[inputs.dev][['user_id','video_id','tab','time_ms','long_view']].copy()
-                prediction['score']=scores
-                prediction.to_parquet(out/'dev_predictions.parquet',index=False)
-                best_metrics=m
-            else:stale+=1
+                step=start//bs+1
+                if step not in eval_steps:
+                    continue
+                training_seconds+=time.perf_counter()-t
+                evaluation_started=time.perf_counter()
+                scores=evaluate(model,inputs,inputs.dev,eval_bs,device)
+                m=metrics(dev_frame,scores)
+                processed=start+len(ix)
+                point=dict(epoch=epoch,fractional_epoch=epoch-1+processed/len(order),
+                    eval_step=(epoch-1)*num_batches+step,
+                    train_loss=total_loss/processed,train_regularization=total_penalty/processed,
+                    train_objective=(total_loss+total_penalty)/processed,train_seconds=training_seconds,
+                    evaluation_seconds=time.perf_counter()-evaluation_started,dev=m)
+                evaluations.append(point)
+                if step == num_batches:
+                    curve.append(point.copy())
+                print(f'{mode} epoch {point["fractional_epoch"]:.3f}: BCE={point["train_loss"]:.5f} L2={point["train_regularization"]:.6f} dev GAUC={m["gauc"]:.5f} train={training_seconds:.1f}s',flush=True)
+                if m['gauc']>best:
+                    best=m['gauc']; epoch_improved=True
+                    torch.save({'state_dict':model.state_dict(),'spec':inputs.spec,'mode':mode,'seed':seed,'epoch':epoch,
+                        'fractional_epoch':point['fractional_epoch'],'eval_step':point['eval_step'],
+                        'feature_info':inputs.feature_info,'history_id_dropout':history_id_dropout,'item_l2':item_l2,
+                        'model_kwargs':model_kwargs},out/'best.pt')
+                    prediction=dev_frame[['user_id','video_id','tab','time_ms','long_view']].copy()
+                    prediction['score']=scores
+                    prediction.to_parquet(out/'dev_predictions.parquet',index=False)
+                    result['best_dev']=m
+                    result['best_fractional_epoch']=point['fractional_epoch']
+                    result['best_eval_step']=point['eval_step']
+                report['elapsed_seconds']=time.perf_counter()-started
+                write_json(report_path,report)
+                model.train()
+                t=time.perf_counter()
+            stale=0 if epoch_improved else stale+1
             if stale>=cfg['patience']:break
-        result=dict(mode=mode,seed=seed,history_id_dropout=history_id_dropout,item_l2=item_l2,epochs=curve,best_dev=best_metrics,parameters=sum(p.numel() for p in model.parameters()),
-                    peak_gpu_mib=torch.cuda.max_memory_allocated()/2**20 if device.type=='cuda' else 0,
-                    status='pilot' if epochs==1 else 'development_comparison')
+        result.update(peak_gpu_mib=torch.cuda.max_memory_allocated()/2**20 if device.type=='cuda' else 0,
+                      status='pilot' if epochs==1 else 'development_comparison')
         checkpoint=torch.load(out/'best.pt',map_location='cpu',weights_only=False)
         seen=checkpoint['state_dict']['trained_items'].numpy()
         candidate_known=inputs.ids[inputs.dev]>1

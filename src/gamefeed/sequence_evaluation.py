@@ -38,7 +38,8 @@ def paired_interval(frame, scores_a, scores_b, repeats=2000, seed=2026):
     values=(counts[valid]@(w*d))/den[valid]
     return dict(mean_difference=float(w@d/w.sum()),ci95=np.quantile(values,[.025,.975]).tolist(),
                 valid_bootstrap=int(valid.sum()),users=len(w),repeats=repeats,
-                interpretation='User sampling uncertainty of the mean difference over three fixed paired training seeds')
+                seed_pairs=len(scores_a),
+                interpretation='User sampling uncertainty conditional on the evaluated paired trained models')
 
 
 def select_on_dev(report, artifact_dir=None):

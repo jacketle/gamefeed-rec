@@ -1,0 +1,67 @@
+{
+  "unit_tests": {
+    "passed": 47,
+    "failed": 0,
+    "log": "tests.txt"
+  },
+  "default_model_initialization_identical": [
+    "B0",
+    "B1",
+    "B2",
+    "B0_with_author",
+    "B1_with_author",
+    "B2_with_author"
+  ],
+  "baseline_files_checked": 60,
+  "baseline_files_changed": [],
+  "completed_training_runs": 9,
+  "experiment_decision": "prefer_history_matches",
+  "pure_experiment_complete": true,
+  "sequence_experiment_complete": true,
+  "final_checked_at": "2026-11-09T10:24:40.159732+00:00",
+  "completed_runs": [
+    "baseline/B0_seed2026",
+    "baseline/B0_seed2027",
+    "baseline/B0_seed2028",
+    "full_author/B0_seed2026",
+    "high_author/B0_seed2026",
+    "high_author_small/B0_seed2026",
+    "history_matches/B0_seed2026",
+    "history_matches/B0_seed2027",
+    "history_matches/B0_seed2028"
+  ],
+  "report_qa": {
+    "links_checked": 12,
+    "broken_links": [],
+    "table_column_errors": [],
+    "independent_numeric_review": "passed"
+  },
+  "figure_qa": {
+    "visually_reviewed": [
+      "screening_learning_curves.png",
+      "confirmation_learning_curves.png"
+    ],
+    "overlap_or_clipping": false,
+    "pdf_minimum_font_pt": {
+      "screening": 7.0,
+      "confirmation": 7.0
+    },
+    "export_formats": [
+      "PNG",
+      "SVG",
+      "PDF"
+    ],
+    "format_note": "Engineering report: 9 inch width and 300 dpi PNG preview; editable vector SVG/PDF retained.",
+    "source_check_counts": {
+      "PASS": 16,
+      "WARN": 4,
+      "FAIL": 0
+    },
+    "source_warning_review": {
+      "EXPORT-RASTER": "PNG preview and SVG/PDF exports serve the engineering report; no journal TIFF submission is requested.",
+      "RASTER-DPI": "The engineering report uses 300 dpi PNG plus vector exports.",
+      "FINAL-WIDTH": "The report uses a 9-inch three-panel layout, not a journal column width.",
+      "UNCERTAINTY-ENCODING": "The figures show each seed separately; paired confidence intervals are reported in tables, not as aggregate curves."
+    }
+  }
+}
